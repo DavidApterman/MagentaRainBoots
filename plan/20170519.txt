@@ -15,13 +15,21 @@ Priority:
 
 
 Workload Sharing:
-
+Each person takes one of 1, 2, or 3.
+Need to collaboratively tackle 4, 5.
+We can figure it out from there.
+Finish 1, 2, 3 by tomorrow or over the weekend if we are busy tomorrow.
+We will plan out next steps afterwards together.
 
 
 
 
 Chronology:
-
+Work in order shown. Create MVP first.
+Make sure that MVP works. Need to implement 1,2,3 in order to link graphics w/ classes and create level 0.
+Need to create first level before moving on to other levels.
+Need to create most basic plants and zombies before creating different types.
+Need to implement easiest difficulty before attempting to implement harder difficulties.
 
 
 
