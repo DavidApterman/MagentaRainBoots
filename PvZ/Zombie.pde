@@ -2,6 +2,7 @@ class Zombie {
 
   float x;
   float y;
+  int health;
   color c;
   int state;
 
@@ -13,8 +14,9 @@ class Zombie {
     c = color(r, g, b);
     x = 800;
     y = 100;
+    health = 100;
     //y = ((int) random(5)) * 120 + 100;
-    state = 0;
+    state = 1;
   }
 
   //overloaded constructor
@@ -32,6 +34,9 @@ class Zombie {
   float getY() {
     return y;
   }
+  int getHealth(){
+    return health;
+  }
   color getColor() {
     return c;
   }
@@ -45,6 +50,9 @@ class Zombie {
   }
   void setY(float newY) {
     y = newY;
+  }
+  void setHealth(int damage){
+    health -= damage;
   }
   void setColor(color newC) {
     c = newC;
@@ -64,8 +72,14 @@ class Zombie {
     noStroke();
     rect(x, y, 50, 50);
   }
-
+  
+  void die() {
+    if (health < 1){
+      state = 0;
+    }
+  }
   void move() { 
+    die();
     display();
     x -= 1;
   }

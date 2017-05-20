@@ -25,8 +25,12 @@ void draw(){
       x.move();
     }
     for (int i = 0; i < testp.getProjectiles().size(); i++){
-      if (testp.getProjectiles().get(i).getX() == x.getX())
+      if (testp.getProjectiles().get(i).getX() == x.getX()){
+        x.setHealth(testp.getProjectiles().get(i).getDamage());
+        System.out.println(x.getHealth());
+        System.out.println(x.getState());
         testp.getProjectiles().remove(i);
+      }
       }
     }
   testp.move();

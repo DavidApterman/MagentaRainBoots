@@ -1,8 +1,8 @@
 class Projectile {
 
-  int x; // x-position of ball in row
-  int y; // y-position of ball, should not be changed post-generation
-  int speed; //determines how fast projectile moves down the row
+  float x; // x-position of ball in row
+  float y; // y-position of ball, should not be changed post-generation
+  //int speed; //determines how fast projectile moves down the row
   int damage; //determines the bang of your buck
   color c;
   
@@ -21,12 +21,28 @@ class Projectile {
     //  ellipse(xCor, yCor, 10, 10);
   }
   
+  //accessors
    float getX(){
     return x;
   }
   float getY(){
     return y;
   }
+  int getDamage(){
+    return damage;
+  }
+  
+  //mutators
+  void setX(float newX){
+    x = newX;
+  }
+  void setY(float newY){
+    y = newY;
+  }
+  void setDamage(int newDmg){
+    damage = newDmg;
+  }
+  
   
   void display() {
     fill(c);
