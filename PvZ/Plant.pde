@@ -24,6 +24,9 @@ class Plant {
   float getY(){
     return y;
   }
+  ArrayList<Projectile> getProjectiles(){
+    return projectiles;
+  }
   
   void shoot(){
     if (shotCounter % 30 == 0) {
@@ -31,11 +34,7 @@ class Plant {
     projectiles.add(proj);
     }
     shotCounter++;
-  }
-  
-  //void checkAttack() {
-    //if(projectiles.get(0).getX() + 10 = 
-    
+  } 
     
   void display(){
     fill(0,255,0);

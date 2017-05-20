@@ -24,6 +24,11 @@ void draw(){
     else{
       x.move();
     }
+    for (int i = 0; i < testp.getProjectiles().size(); i++){
+      if(testp.getProjectiles().get(i).getX() + 10 == x.get(X) - 50){
+        testp.getProjectiles().remove(i);
+      }
+    }
   }
   testp.move();
   //System.out.println(width);
