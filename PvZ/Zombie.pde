@@ -12,7 +12,8 @@ class Zombie {
     float b = random(256);
     c = color(r, g, b);
     x = 800;
-    y = ((int) random(5)) * 120 + 100;
+    y = 100;
+    //y = ((int) random(5)) * 120 + 100;
     state = 0;
   }
 
@@ -54,7 +55,12 @@ class Zombie {
 
   //displays the zombie
   void display() {
-    fill(150);
+    if (x == -25){
+      fill(255, 0, 0);
+    }
+    else{
+      fill(150);
+    }
     noStroke();
     rect(x, y, 50, 50);
   }

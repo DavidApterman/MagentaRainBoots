@@ -1,16 +1,30 @@
+import java.util.PriorityQueue;
+
 Zombie test = new Zombie();
 Plant testp = new Plant();
+PriorityQueue<Zombie> zombies1 = new PriorityQueue<Zombie>();
 
 void setup(){
   size(800,660); //generates board
   background(25, 150, 25); //sets board color 
+  zombies1.add(test);
 }
 
 void draw(){
   frameRate(30); //sets basic parameters
   background(25, 150, 25); 
   display();
-  test.move();
+  for (Zombie x : zombies1){
+    if (x.getX() == -25){
+      x.display();
+      textSize(32);
+      text("game over", 350, 300);
+      noLoop();
+    }
+    else{
+      x.move();
+    }
+  }
   testp.move();
   //System.out.println(width);
   System.out.println(test.y);

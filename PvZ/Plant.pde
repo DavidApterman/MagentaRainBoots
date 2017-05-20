@@ -25,7 +25,7 @@ class Plant {
     return y;
   }
   
-    void shoot(){
+  void shoot(){
     if (shotCounter % 30 == 0) {
     Projectile proj = new Projectile(x, y, damage);
     projectiles.add(proj);
