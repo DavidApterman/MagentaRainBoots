@@ -4,7 +4,7 @@ Team Members: Jesse Sit, David Apterman, Henry Zheng
 Priority:
 1. Write up basic classes for plant and zombie
 2. Skeleton of field using processing
-3. Implement graphic representation of plants, zombies, and sunlight
+3. Implement basic graphic representation of plants, zombies, and sunlight
 4. Functionally link the graphics with respective java classes
 5. Create level 0 with single row operating on queues
 6. Expand game to multiple rows and levels
