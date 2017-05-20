@@ -1,4 +1,4 @@
-class Zombie{
+class Zombie {
 
   float x;
   float y;
@@ -6,54 +6,54 @@ class Zombie{
   int state;
 
   //default constructor
-  Zombie(){
+  Zombie() {
     float r = random(256);
     float g = random(256);
     float b = random(256);
     c = color(r, g, b);
     x = 800;
-    y = random((height - r) + r/2);
+    y = ((int) random(5)) * 120 + 100;
     state = 0;
   }
-  
+
   //overloaded constructor
-  Zombie(int xCor, int yCor){
+  Zombie(int xCor, int yCor) {
     this();
     x = xCor;
     y = yCor; 
     state = 1;
   }
-  
+
   //accessors
-  float getX(){
+  float getX() {
     return x;
   }
-  float getY(){
+  float getY() {
     return y;
   }
-  color getColor(){
+  color getColor() {
     return c;
   }
-  int getState(){
+  int getState() {
     return state;
   }
 
   //mutators
-  void setX(float newX){
+  void setX(float newX) {
     x = newX;
   }
-  void setY(float newY){
+  void setY(float newY) {
     y = newY;
   }
-  void setColor(color newC){
+  void setColor(color newC) {
     c = newC;
   }
-  void setState(int newState){
+  void setState(int newState) {
     state = newState;
   }
 
-  //displays the ball
-  void display(){
+  //displays the zombie
+  void display() {
     fill(150);
     noStroke();
     rect(x, y, 50, 50);
