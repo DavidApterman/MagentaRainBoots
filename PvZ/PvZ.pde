@@ -25,15 +25,14 @@ void draw(){
       x.move();
     }
     for (int i = 0; i < testp.getProjectiles().size(); i++){
-      if(testp.getProjectiles().get(i).getX() + 10 == x.get(X) - 50){
+      if (testp.getProjectiles().get(i).getX() == x.getX())
         testp.getProjectiles().remove(i);
       }
     }
-  }
   testp.move();
   //System.out.println(width);
-  System.out.println(test.y);
-}
+  //System.out.println(test.y);
+  }
 
 void display(){ 
     fill(150);
