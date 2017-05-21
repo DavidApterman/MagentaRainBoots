@@ -10,7 +10,7 @@ class Plant {
   
   Plant(){
     health = 50;
-    damage = 5;
+    damage = 15;
     x = 25;
     y = 100;
     range = x + 400;

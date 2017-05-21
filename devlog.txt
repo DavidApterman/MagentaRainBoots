@@ -11,7 +11,7 @@ OBSTACLES OVERCOME
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  - projectile collision with zombies (line 28 of PvZ file)
+  - after zombie dies, plant is outline (stroke() call somewhere?)
   -
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

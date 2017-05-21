@@ -1,4 +1,4 @@
-class Zombie {
+class Zombie implements Comparable{
 
   float x;
   float y;
@@ -74,7 +74,7 @@ class Zombie {
   }
   
   void die() {
-    if (health < 1){
+    if (health <= 10){
       state = 0;
     }
   }
@@ -82,5 +82,17 @@ class Zombie {
     die();
     display();
     x -= 1;
+  }
+  
+  int compareTo(Object other){
+    if (x > ((Zombie) other).getX()){
+      return -1;
+    }
+    else if (x == ((Zombie) other).getX()){
+      return 0;
+    }
+    else{
+      return 1;
+    }
   }
 }
