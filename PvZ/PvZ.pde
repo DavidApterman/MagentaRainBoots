@@ -4,8 +4,8 @@ Zombie test = new Zombie();
 Zombie test1 = new Zombie(600,100);
 Zombie test2 = new Zombie();
 Plant testp = new Plant();
-PriorityQueue<Zombie> zombies1_offfield = new PriorityQueue<Zombie>();
-PriorityQueue<Zombie> zombies1_onfield = new PriorityQueue<Zombie>();
+PriorityQueue<Zombie> zombies1_offfield = new PriorityQueue<Zombie>(); //all zombies for level
+PriorityQueue<Zombie> zombies1_onfield = new PriorityQueue<Zombie>();  //all zombies currently on screen
 PriorityQueue<Zombie> zombies1_nextfield = new PriorityQueue<Zombie>();
 int time = 0;
 
@@ -32,10 +32,10 @@ void draw(){
   time += 1;
   if (time % 300 == 0){
     if (!zombies1_offfield.isEmpty()){
-      zombies1_onfield.add(zombies1_offfield.remove());
+      zombies1_onfield.add(zombies1_offfield.remove()); //if there are more zombies to spawn, by all means
     }
   }
-  for (Zombie x : zombies1_onfield){
+  for (Zombie x : zombies1_onfield){ //checks if a zombie has reached the end of the row, which would cause a game over
     if (x.getX() == -25){
       x.display();
       textSize(32);
@@ -45,16 +45,16 @@ void draw(){
     else{
       x.move();
     }
-    for (int i = 0; i < testp.getProjectiles().size(); i++){
-      if (testp.getProjectiles().get(i).getX() + 5 == x.getX() - 25){
+    for (int i = 0; i < testp.getProjectiles().size(); i++){   
+      if (testp.getProjectiles().get(i).getX() + 5 == x.getX() - 25){  //checks collision between shot and zombie
         x.setHealth(testp.getProjectiles().get(i).getDamage());
-        System.out.println(x.getHealth());
+        System.out.println(x.getHealth());  //s.o.p
         System.out.println(x.getState());
-        if(x.getState() == 0) { 
+        if(x.getState() == 0) {   //if a zombe is dead, off it goes off the screen and to zombie heaven
           zombies1_nextfield.add(x);
           zombies1_onfield.remove(x);
         }
-        testp.getProjectiles().remove(i);
+        testp.getProjectiles().remove(i); //projectile is removed from screen
       }
       }
     }
