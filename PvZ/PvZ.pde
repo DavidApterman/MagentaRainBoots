@@ -29,6 +29,9 @@ void draw(){
         x.setHealth(testp.getProjectiles().get(i).getDamage());
         System.out.println(x.getHealth());
         System.out.println(x.getState());
+        if(x.getState() == 0) { 
+        zombies1.remove(x);
+        }
         testp.getProjectiles().remove(i);
       }
       }
