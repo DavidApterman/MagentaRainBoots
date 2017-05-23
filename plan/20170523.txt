@@ -1,0 +1,38 @@
+Team Name: MagentaRainBoots
+Team Members: Jesse Sit, David Apterman, Henry Zheng
+
+Priority:
+Implement MinHeap + Queue + Heapsort / MergeSort + Queue for Zombies.
+
+1. Write up basic classes for plant and zombie
+2. Skeleton of field using processing
+3. Implement basic graphic representation of plants, zombies, and sunlight
+4. Functionally link the graphics with respective java classes
+5. Create level 0 with single row operating on queues
+6. Expand game to multiple rows and levels
+7. Create different types of plants and zombies (bosses and mini bosses)
+8. Implement different levels of difficulty
+
+
+
+
+Workload Sharing:
+Work together to implement MinHeap + Queue + Heapsort / MergeSort + Queue for Zombies.
+Each person takes one of 1, 2, or 3.
+Need to collaboratively tackle 4, 5.
+We can figure it out from there.
+Finish 1, 2, 3 by tomorrow or over the weekend if we are busy tomorrow.
+We will plan out next steps afterwards together.
+
+
+
+
+Chronology:
+Work in order shown. Create MVP first.
+Make sure that MVP works. Need to implement 1,2,3 in order to link graphics w/ classes and create level 0.
+Implement MinHeap + Queue + Heapsort / MergeSort + Queue for Zombies.
+Need to create first level before moving on to other levels.
+Need to create most basic plants and zombies before creating different types.
+Need to implement easiest difficulty before attempting to implement harder difficulties.
+
+
