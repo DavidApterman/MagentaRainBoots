@@ -1,12 +1,13 @@
-import java.util.PriorityQueue;
+//import java.util.*;
 
 Zombie test = new Zombie();
-Zombie test1 = new Zombie(600,100);
+Zombie test1 = new Zombie(300,100);
 Zombie test2 = new Zombie();
+Zombie test3 = new Zombie(600,100);
 Plant testp = new Plant();
-PriorityQueue<Zombie> zombies1_offfield = new PriorityQueue<Zombie>(); //all zombies for level
-PriorityQueue<Zombie> zombies1_onfield = new PriorityQueue<Zombie>();  //all zombies currently on screen
-PriorityQueue<Zombie> zombies1_nextfield = new PriorityQueue<Zombie>();
+ArrayList<Zombie> zombies1_offfield = new ArrayList<Zombie>(); //all zombies for level
+ArrayList<Zombie> zombies1_onfield = new ArrayList<Zombie>();  //all zombies currently on screen
+ArrayList<Zombie> zombies1_nextfield = new ArrayList<Zombie>();
 int time = 0;
 
 void setup(){
@@ -15,7 +16,10 @@ void setup(){
   //zombies1.add(test);
   //try{
     zombies1_onfield.add(test);
+    zombies1_offfield.add(test1);
     zombies1_offfield.add(test2);
+    zombies1_offfield.add(test3);
+    
   //}
   /*
   catch(ClassCastException e){
@@ -32,27 +36,31 @@ void draw(){
   time += 1;
   if (time % 300 == 0){
     if (!zombies1_offfield.isEmpty()){
-      zombies1_onfield.add(zombies1_offfield.remove()); //if there are more zombies to spawn, by all means
+      zombies1_onfield.add(zombies1_offfield.remove(0)); //if there are more zombies to spawn, by all means
     }
   }
-  for (Zombie x : zombies1_onfield){ //checks if a zombie has reached the end of the row, which would cause a game over
-    if (x.getX() == -25){
-      x.display();
+  for (int x = 0; x < zombies1_onfield.size(); x++){ //checks if a zombie has reached the end of the row, which would cause a game over
+    if (zombies1_onfield.get(x).getX() <= -25){
+      zombies1_onfield.get(x).display();
       textSize(32);
       text("game over", 350, 300);
       noLoop();
     }
     else{
-      x.move();
+      zombies1_onfield.get(x).move();
     }
     for (int i = 0; i < testp.getProjectiles().size(); i++){   
-      if (testp.getProjectiles().get(i).getX() + 5 == x.getX() - 25){  //checks collision between shot and zombie
-        x.setHealth(testp.getProjectiles().get(i).getDamage());
-        System.out.println(x.getHealth());  //s.o.p
-        System.out.println(x.getState());
-        if(x.getState() == 0) {   //if a zombe is dead, off it goes off the screen and to zombie heaven
-          zombies1_nextfield.add(x);
-          zombies1_onfield.remove(x);
+      if (x < zombies1_onfield.size() && testp.getProjectiles().get(i).getX() + 5 >= zombies1_onfield.get(x).getX() - 25 && testp.getProjectiles().get(i).getX() + 5 <= zombies1_onfield.get(x).getX() - 20){  //checks collision between shot and zombie
+        System.out.println("projectiles size: " + testp.getProjectiles().size());
+        zombies1_onfield.get(x).setHealth(testp.getProjectiles().get(i).getDamage());
+        System.out.println(zombies1_onfield.get(x).getHealth());  //s.o.p
+        System.out.println(zombies1_onfield.get(x).getState());
+        if(zombies1_onfield.get(x).getState() == 0) {   //if a zombe is dead, off it goes off the screen and to zombie heaven
+          zombies1_nextfield.add(zombies1_onfield.get(x));
+          zombies1_onfield.remove(zombies1_onfield.get(x));
+          if(zombies1_onfield.isEmpty()){
+            return;
+          }
         }
         testp.getProjectiles().remove(i); //projectile is removed from screen
       }

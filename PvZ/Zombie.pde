@@ -84,6 +84,10 @@ class Zombie implements Comparable{
     x -= 1;
   }
   
+ // void hit( Projectile p){
+ //   if (p.getX() + 5 <= x - 20){
+      
+  
   int compareTo(Object other){
     if (x > ((Zombie) other).getX()){
       return -1;
