@@ -1,4 +1,4 @@
-class Zombie implements Comparable{
+class Zombie implements Comparable {
 
   float x;
   float y;
@@ -34,7 +34,7 @@ class Zombie implements Comparable{
   float getY() {
     return y;
   }
-  int getHealth(){
+  int getHealth() {
     return health;
   }
   color getColor() {
@@ -51,7 +51,7 @@ class Zombie implements Comparable{
   void setY(float newY) {
     y = newY;
   }
-  void setHealth(int damage){
+  void setHealth(int damage) {
     health -= damage;
   }
   void setColor(color newC) {
@@ -63,18 +63,17 @@ class Zombie implements Comparable{
 
   //displays the zombie
   void display() {
-    if (x == -25){
+    if (x == -25) {
       fill(255, 0, 0);
-    }
-    else{
+    } else {
       fill(150);
     }
     noStroke();
     rect(x, y, 50, 50);
   }
-  
+
   void die() {
-    if (health <= 10){
+    if (health <= 10) {
       state = 0;
     }
   }
@@ -83,19 +82,17 @@ class Zombie implements Comparable{
     display();
     x -= 1;
   }
-  
- // void hit( Projectile p){
- //   if (p.getX() + 5 <= x - 20){
-      
-  
-  int compareTo(Object other){
-    if (x > ((Zombie) other).getX()){
+
+  // void hit( Projectile p){
+  //   if (p.getX() + 5 <= x - 20){
+
+
+  int compareTo(Object other) {
+    if (x > ((Zombie) other).getX()) {
       return -1;
-    }
-    else if (x == ((Zombie) other).getX()){
+    } else if (x == ((Zombie) other).getX()) {
       return 0;
-    }
-    else{
+    } else {
       return 1;
     }
   }

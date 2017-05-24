@@ -5,7 +5,7 @@ class Projectile {
   //int speed; //determines how fast projectile moves down the row
   int damage; //determines the bang of your buck
   color c;
-  
+
   Projectile() {
     float r = 10;
     float g = 255;
@@ -20,30 +20,30 @@ class Projectile {
     damage = dmg;
     //  ellipse(xCor, yCor, 10, 10);
   }
-  
+
   //accessors
-   float getX(){
+  float getX() {
     return x;
   }
-  float getY(){
+  float getY() {
     return y;
   }
-  int getDamage(){
+  int getDamage() {
     return damage;
   }
-  
+
   //mutators
-  void setX(float newX){
+  void setX(float newX) {
     x = newX;
   }
-  void setY(float newY){
+  void setY(float newY) {
     y = newY;
   }
-  void setDamage(int newDmg){
+  void setDamage(int newDmg) {
     damage = newDmg;
   }
-  
-  
+
+
   void display() {
     fill(c);
     noStroke();
