@@ -1,10 +1,10 @@
-class Zombie implements Comparable {
+class Zombie { //implements Comparable {
 
-  float x;
-  float y;
-  int health;
+  float x; // x-position of zombie in row
+  float y; // y-position of zombie, should not be changed post-generation
+  int health; // if health <= 0, change state to 0
   color c;
-  int state;
+  int state; // if state = 0, zombie dies
 
   //default constructor
   Zombie() {
@@ -73,7 +73,7 @@ class Zombie implements Comparable {
   }
 
   void die() {
-    if (health <= 10) {
+    if (health <= 0) {
       state = 0;
     }
   }
@@ -87,7 +87,7 @@ class Zombie implements Comparable {
   //   if (p.getX() + 5 <= x - 20){
 
 
-  int compareTo(Object other) {
+  /*int compareTo(Object other) {
     if (x > ((Zombie) other).getX()) {
       return -1;
     } else if (x == ((Zombie) other).getX()) {
@@ -95,5 +95,5 @@ class Zombie implements Comparable {
     } else {
       return 1;
     }
-  }
+  }*/
 }

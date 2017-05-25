@@ -6,13 +6,14 @@ class Projectile {
   int damage; //determines the bang of your buck
   color c;
 
+  //default constructor
   Projectile() {
     float r = 10;
     float g = 255;
     float b = 10;
     c = color(r, g, b);
   }
-
+  //overloaded constructor
   Projectile( int xCor, int yCor, int dmg) {
     this();
     x = xCor;

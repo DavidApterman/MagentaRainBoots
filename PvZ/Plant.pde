@@ -8,6 +8,7 @@ class Plant {
   ArrayList<Projectile> projectiles; //stores shots being fired by plant
   int shotCounter; //forces intervals between shots 
 
+  //default constructor
   Plant() {
     health = 50;
     damage = 15;
@@ -18,6 +19,7 @@ class Plant {
     shotCounter = 0;
   }
 
+  //accessors
   float getX() {
     return x;
   }
@@ -29,7 +31,7 @@ class Plant {
   }
 
   void shoot() {
-    if (shotCounter % 30 == 0) {
+    if (shotCounter % 30 == 0) { //interval shots
       Projectile proj = new Projectile(x, y, damage);
       projectiles.add(proj);
     }
