@@ -8,6 +8,7 @@ Plant testp = new Plant();
 ArrayList<Zombie> zombies1_offfield = new ArrayList<Zombie>(); //all zombies for level
 ArrayList<Zombie> zombies1_onfield = new ArrayList<Zombie>();  //all zombies currently on screen
 ArrayList<Zombie> zombies1_nextfield = new ArrayList<Zombie>();
+ArrayList<Sunlight> sunspots = new ArrayList<Sunlight>(); 
 int time = 0;
 
 void setup() {
@@ -24,6 +25,12 @@ void draw() {
   background(25, 150, 25); 
   display();
   time += 1;
+  if(time%300 == 0 && sunspots.size() < 5) {
+    sunspots.add(new Sunlight(random(800), 0));
+  }
+  for(Sunlight x:sunspots) {
+    x.move();
+  }
   if (time % 300 == 0) { //maintain rate of zombies
     if (!zombies1_offfield.isEmpty()) {
       zombies1_onfield.add(zombies1_offfield.remove(0)); //if there are more zombies to spawn, by all means
