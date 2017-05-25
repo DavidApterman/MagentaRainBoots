@@ -40,12 +40,12 @@ LESSONS LEARNED
 ==============================================================
 @2017-05-19
 --------------------------------------------------------------
-David, Jesse, Henry   :: figured out plan of action, created basic plant w/ projectiles, moving zombie
+David, Jesse, Henry   :: figured out plan of action, created basic plant w/ projectiles, moving zombie, problem with adding multiply zombies
 ==============================================================
 
 @2017-05-20
 --------------------------------------------------------------
-
+Henry, Jesse   :: fixed problem with multiple zombies, implemented damage and death of first zombie, problem with damaging subsequent zombies
 ==============================================================
 
 @2017-05-21
@@ -55,15 +55,36 @@ David, Jesse, Henry   :: figured out plan of action, created basic plant w/ proj
 
 @2017-05-22
 --------------------------------------------------------------
-
+Henry, Jesse, David   :: thought about how to implement data structures and algos, came up with list of 2nd term topics
 ==============================================================
 
 @2017-05-23
 --------------------------------------------------------------
-
+Jesse   :: created initial flowchart
+David   :: created initial UML diagram
 ==============================================================
 
 @2017-05-24
+--------------------------------------------------------------
+Jesse, David, Henry   :: fixed problem with damaging subsequent zombies using a range to hit, cleaned up code and added comments to driver file
+==============================================================
+
+@2017-05-25
+--------------------------------------------------------------
+
+==============================================================
+
+@2017-05-26
+--------------------------------------------------------------
+
+==============================================================
+
+@2017-05-27
+--------------------------------------------------------------
+
+==============================================================
+
+@2017-05-28
 --------------------------------------------------------------
 
 ==============================================================
