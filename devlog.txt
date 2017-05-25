@@ -6,7 +6,7 @@ MagentaRainBoots from pd3 -- David Apterman, Jesse Sit, Henry Zheng
 OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   wow we so BOSS bc...
-  -
+  - we got projectiles to hit first zombie in row
   -
 
 UNRESOLVED ISSUES
@@ -16,16 +16,17 @@ UNRESOLVED ISSUES
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   - wow! oo!...
+  - 
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   we changed ___ to ___ bc...
-  -
-  -
+  - we changed zombie queues to ArrayLists bc we realized queues were not needed
+  - we changed projectile queues to heaps bc we realized it was a good idea to implement them as heaps based on the very definition of heaps
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  -
-  -
+  - we don't have to overcomplicate things. simplicity is key
+  - drawings + kts <3
   
   
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  
@@ -66,12 +67,13 @@ David   :: created initial UML diagram
 
 @2017-05-24
 --------------------------------------------------------------
-Jesse, David, Henry   :: fixed problem with damaging subsequent zombies using a range to hit, cleaned up code and added comments to driver file
+Jesse, David, Henry   :: fixed problem with damaging subsequent zombies using a range to hit, fixed up broken code and added comments to driver file
 ==============================================================
 
 @2017-05-25
 --------------------------------------------------------------
-
+Jesse, Henry   :: added comments to all classes, cleaned up some unneeded code
+David   :: started Sunlight class
 ==============================================================
 
 @2017-05-26
