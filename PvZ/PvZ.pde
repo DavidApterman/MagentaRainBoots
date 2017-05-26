@@ -13,6 +13,71 @@ int time = 0;
 int sunlight = 50;
 boolean plantclicked = false;
 
+//******************************************************************************\\                                                      
+////////////////////////// WARNING: ENTERING MERGE SORT \\\\\\\\\\\\\\\\\\\\\\\\\\
+ArrayList<Zombie> merge(ArrayList<Zombie> a, ArrayList<Zombie> b ) {
+
+  ArrayList<Zombie> retArr = new ArrayList<Zombie>(); //( a.size() + b.size() )
+
+  //init position markers for each input array
+  int aPos = 0;
+  int bPos = 0;
+
+  int pos = 0; //position marker for return array
+
+  while ( aPos < a.size() && bPos < b.size() ) {
+    if ( a.get(aPos).getX() < b.get(bPos).getX() ) {  
+      retArr.set(pos, a.get(aPos));
+      aPos++;
+    } else {
+      retArr.set(pos, b.get(bPos));
+      bPos++;
+    }
+    pos++;
+  }
+  //at least one input array has been exhausted
+  if ( bPos >= b.size() )
+    for (; pos < retArr.size(); pos++ ) {
+      retArr.set(pos, a.get(aPos)); 
+      aPos++;
+    } else
+    for (; pos < retArr.size(); pos++ ) {
+      retArr.set(pos, b.get(bPos)); 
+      bPos++;
+    }
+
+  return retArr;
+}//end merge()
+
+
+/******************************************************
+ * ArrayList<Zombie> sort(ArrayList<Zombie> arr) 
+ ******************************************************/
+ArrayList<Zombie>  sort( ArrayList<Zombie>  arr ) {
+
+  //if dataset is 1 element, then dataset is sorted
+  if ( arr.size() <= 1 ) 
+    return arr;
+
+  //else, halve dataset and recurse on each half
+  int leftLen = arr.size() / 2;
+  ArrayList<Zombie> leftHalf = new ArrayList<Zombie>() ;
+  ArrayList<Zombie> rightHalf = new ArrayList<Zombie>() ;
+
+  for ( int i=0; i<arr.size(); i++ ) {
+    if ( i < leftLen )
+      leftHalf.set(i, arr.get(i));
+    else
+      rightHalf.set(i-leftLen, arr.get(i));
+  }
+
+  return merge( sort(leftHalf), sort(rightHalf) );
+}
+
+////////////////////////// WARNING: LEAVING MERGE SORT \\\\\\\\\\\\\\\\\\\\\\\\\\
+//******************************************************************************\\ 
+
+
 void setup() {
   size(800, 660); //generates board
   background(25, 150, 25); //sets board color 
