@@ -10,6 +10,7 @@ ArrayList<Zombie> zombies1_onfield = new ArrayList<Zombie>();  //all zombies cur
 ArrayList<Zombie> zombies1_nextfield = new ArrayList<Zombie>();
 ArrayList<Sunlight> sunspots = new ArrayList<Sunlight>(); 
 int time = 0;
+int sunlight = 50;
 
 void setup() {
   size(800, 660); //generates board
@@ -87,6 +88,15 @@ void display() {
   fill(0);
   textSize(18);
   text("sunlight", 25, 25);
+  text(sunlight, 25, 50);
 }
 void mouseClicked() {
+  for(int i = 0; i < sunspots.size(); i++) {
+    if(sunspots.get(i).hit(mouseX,mouseY)) {
+      sunlight += 25;
+      sunspots.remove(i);
+    }
+  }
+      
+      
 }

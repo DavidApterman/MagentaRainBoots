@@ -35,7 +35,7 @@ class Sunlight {
     y = newY;
   }
   boolean hit(int mouseX, int mouseY) {
-    if( mouseX > getX() - 25 && mouseX < getX() + 25 && mouseY > getY() - 25 && mouseY < getY() + 25) {
+    if( mouseX > getX() - 12.5 && mouseX < getX() + 12.5 && mouseY > getY() - 12.5 && mouseY < getY() + 12.5) {
       setY(-25);
       return true;
     }
@@ -47,7 +47,7 @@ class Sunlight {
   void display() {
     fill(c);
     noStroke();
-    ellipse(x+25, y+25, 25, 25);
+    ellipse(x, y, 25, 25);
   }
 
   void move() {
