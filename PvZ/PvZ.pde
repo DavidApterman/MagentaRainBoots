@@ -4,13 +4,14 @@ Zombie test = new Zombie();
 Zombie test1 = new Zombie(300, 100);
 Zombie test2 = new Zombie();
 Zombie test3 = new Zombie(600, 100);
-Plant testp = new Plant();
+Plant testp = new Plant(25, 100);
 ArrayList<Zombie> zombies1_offfield = new ArrayList<Zombie>(); //all zombies for level
 ArrayList<Zombie> zombies1_onfield = new ArrayList<Zombie>();  //all zombies currently on screen
 ArrayList<Zombie> zombies1_nextfield = new ArrayList<Zombie>();
 ArrayList<Sunlight> sunspots = new ArrayList<Sunlight>(); 
 int time = 0;
 int sunlight = 50;
+boolean plantclicked = false;
 
 void setup() {
   size(800, 660); //generates board
@@ -89,6 +90,9 @@ void display() {
   textSize(18);
   text("sunlight", 25, 25);
   text(sunlight, 25, 50);
+  text("||", 100, 25);
+  text("plant", 125, 25);
+  text("||", 175, 25);//test
 }
 void mouseClicked() {
   for(int i = 0; i < sunspots.size(); i++) {
@@ -98,5 +102,13 @@ void mouseClicked() {
     }
   }
       
-      
+  if (mouseX >= 110 && mouseX <= 175 && mouseY >= 10 && mouseY <= 35){
+    System.out.println("plant hit");
+    plantclicked = true;
+  }
+  if (plantclicked &&
+  (mouseX - 60) / 120 == 1 &&
+  mouseY / 100 = 1){
+    Plant x = new Plant();//doesnt work yet. fix.
+  }
 }

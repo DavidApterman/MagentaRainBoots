@@ -7,6 +7,7 @@ class Plant {
   int range; 
   ArrayList<Projectile> projectiles; //stores shots being fired by plant
   int shotCounter; //forces intervals between shots 
+  int type;
 
   //default constructor
   Plant() {
@@ -17,6 +18,12 @@ class Plant {
     range = x + 400;
     projectiles = new ArrayList<Projectile>(10);
     shotCounter = 0;
+  }
+  
+  Plant (int xcor, int ycor){
+    this();
+    x = xcor;
+    y = ycor;
   }
 
   //accessors
