@@ -78,7 +78,9 @@ David   :: started Sunlight class
 
 @2017-05-26
 --------------------------------------------------------------
-
+MagentaRainBoots : quickly wrapped up sunlight collision and implemented counter
+Jesse, Henry: started implementing grid organization for plants (a 2D array)
+David: finished adding MergeSort code to the PvZ file.
 ==============================================================
 
 @2017-05-27
