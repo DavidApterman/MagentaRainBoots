@@ -56,7 +56,7 @@ class Projectile implements Comparable{
   }
 
   void move() {
-    display();
+   // display();
     x += 2;
   }
   
