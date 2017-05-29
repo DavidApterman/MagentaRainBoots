@@ -13,7 +13,7 @@ class Zombie { //implements Comparable {
     float b = random(256);
     c = color(r, g, b);
     x = 800;
-    y = 100;
+    y = 95;
     health = 100;
     //y = ((int) random(5)) * 120 + 100;
     state = 1;
@@ -65,7 +65,8 @@ class Zombie { //implements Comparable {
   void display() {
     if (x == -25) {
       fill(255, 0, 0);
-    } else {
+    }
+    else {
       fill(150);
     }
     noStroke();

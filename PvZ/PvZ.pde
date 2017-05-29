@@ -4,11 +4,12 @@ Zombie test = new Zombie();
 Zombie test1 = new Zombie(300, 100);
 Zombie test2 = new Zombie();
 Zombie test3 = new Zombie(600, 100);
-Plant testp = new Plant(25, 100);
+//Plant testp = new Plant(25, 100);
 ArrayList<Zombie> zombies1_offfield = new ArrayList<Zombie>(); //all zombies for level
 ArrayList<Zombie> zombies1_onfield = new ArrayList<Zombie>();  //all zombies currently on screen
 ArrayList<Zombie> zombies1_nextfield = new ArrayList<Zombie>();
 ArrayList<Sunlight> sunspots = new ArrayList<Sunlight>(); 
+Plant[][] plants = new Plant[5][8];
 int time = 0;
 int sunlight = 50;
 boolean plantclicked = false;
@@ -113,26 +114,31 @@ void draw() {
     else {
       zombies1_onfield.get(x).move();
     }
-    for (int i = 0; i < testp.getProjectiles().size(); i++) {   
-      if (x < zombies1_onfield.size() &&
-          testp.getProjectiles().get(i).getX() + 5 >= zombies1_onfield.get(x).getX() - 25 &&
-          testp.getProjectiles().get(i).getX() + 5 <= zombies1_onfield.get(x).getX() - 20) {  //checks collision between shot and zombie
-        //System.out.println("projectiles size: " + testp.getProjectiles().size());
-        zombies1_onfield.get(x).setHealth(testp.getProjectiles().get(i).getDamage()); //damage zombies
-        //System.out.println(zombies1_onfield.get(x).getHealth());  //s.o.p
-        //System.out.println(zombies1_onfield.get(x).getState());
-        if (zombies1_onfield.get(x).getState() == 0) {   //if a zombe is dead, off it goes off the screen and to zombie heaven
-          zombies1_nextfield.add(zombies1_onfield.get(x)); //add to nextfield
-          zombies1_onfield.remove(zombies1_onfield.get(x)); //remove zombies after death
-          if (zombies1_onfield.isEmpty()) { //for changes in # of zombies1_onfield during runtime
-            return;
-          }
+  }  
+  
+  for (int i = 0; i < plants.length; i++){
+    for (int j = 0; j < plants[i].length; j++){
+      if (plants[i][j] != null){//move projectiles
+        plants[i][j].move();
+      }
+      if (//x < zombies1_onfield.size() &&
+        testp.getProjectiles().get(0).getX() + 5 >= zombies1_onfield.get(x).getX() - 25 &&
+        testp.getProjectiles().get(0).getX() + 5 <= zombies1_onfield.get(x).getX() - 20) {  //checks collision between shot and zombie
+      //System.out.println("projectiles size: " + testp.getProjectiles().size());
+      zombies1_onfield.get(x).setHealth(testp.getProjectiles().get(i).getDamage()); //damage zombies
+      //System.out.println(zombies1_onfield.get(x).getHealth());  //s.o.p
+      //System.out.println(zombies1_onfield.get(x).getState());
+      if (zombies1_onfield.get(x).getState() == 0) {   //if a zombe is dead, off it goes off the screen and to zombie heaven
+        zombies1_nextfield.add(zombies1_onfield.get(x)); //add to nextfield
+        zombies1_onfield.remove(zombies1_onfield.get(x)); //remove zombies after death
+        if (zombies1_onfield.isEmpty()) { //for changes in # of zombies1_onfield during runtime
+          return;
         }
-        testp.getProjectiles().remove(i); //projectile is removed from screen
+      }
+      testp.getProjectiles().remove(i); //projectile is removed from screen
       }
     }
   }
-  testp.move(); //move projectiles
   //System.out.println(width);
   //System.out.println(test.y);
 }
@@ -150,6 +156,15 @@ void display() {
   line(0, 420, 800, 420);
   line(0, 540, 800, 540);
   
+  //line separating columns for field
+  line(100, 60, 100, 660);
+  line(200, 60, 200, 660);
+  line(300, 60, 300, 660);
+  line(400, 60, 400, 660);
+  line(500, 60, 500, 660);
+  line(600, 60, 600, 660);
+  line(700, 60, 700, 660);
+  
   //sunlight statistic showing
   fill(0);
   textSize(18);
@@ -166,14 +181,14 @@ void mouseClicked() {
       sunspots.remove(i);
     }
   }
-      
+  if (plantclicked){
+    int r = (mouseY - 60) / 120;
+    int c = mouseX / 100;
+    plants[r][c] = new Plant(c*100+25, r*120+95);
+    plantclicked = false;
+  }
   if (mouseX >= 110 && mouseX <= 175 && mouseY >= 10 && mouseY <= 35){
     System.out.println("plant hit");
     plantclicked = true;
-  }
-  if (plantclicked &&
-  (mouseX - 60) / 120 == 1 &&
-  mouseY / 100 = 1){
-    Plant x = new Plant();//doesnt work yet. fix.
   }
 }
