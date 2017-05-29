@@ -10,6 +10,11 @@ ArrayList<Zombie> zombies1_onfield = new ArrayList<Zombie>();  //all zombies cur
 ArrayList<Zombie> zombies1_nextfield = new ArrayList<Zombie>();
 ArrayList<Sunlight> sunspots = new ArrayList<Sunlight>(); 
 Plant[][] plants = new Plant[5][8];
+ALHeap projectile1 = new ALHeap();
+ALHeap projectile2 = new ALHeap();
+ALHeap projectile3 = new ALHeap();
+ALHeap projectile4 = new ALHeap();
+ALHeap projectile5 = new ALHeap();
 int time = 0;
 int sunlight = 50;
 boolean plantclicked = false;
@@ -121,6 +126,7 @@ void draw() {
       if (plants[i][j] != null){//move projectiles
         plants[i][j].move();
       }
+      /*
       if (//x < zombies1_onfield.size() &&
         testp.getProjectiles().get(0).getX() + 5 >= zombies1_onfield.get(x).getX() - 25 &&
         testp.getProjectiles().get(0).getX() + 5 <= zombies1_onfield.get(x).getX() - 20) {  //checks collision between shot and zombie
@@ -136,6 +142,15 @@ void draw() {
         }
       }
       testp.getProjectiles().remove(i); //projectile is removed from screen
+      }
+      */
+    }
+  }
+  
+    for (int i = 0; i < plants.length; i++){
+    if (i == 0){
+      for (Plant x : plants[i]){
+        projectile1.add(x.getProjectiles().get(x.getProjectiles().size()-1));
       }
     }
   }

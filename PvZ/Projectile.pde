@@ -1,4 +1,4 @@
-class Projectile {
+class Projectile implements Comparable{
 
   float x; // x-position of ball in row
   float y; // y-position of ball, should not be changed post-generation
@@ -20,6 +20,10 @@ class Projectile {
     y = yCor;
     damage = dmg;
     //  ellipse(xCor, yCor, 10, 10);
+  }
+  
+  String toString(){
+    return "" + getX();
   }
 
   //accessors
@@ -54,5 +58,17 @@ class Projectile {
   void move() {
     display();
     x += 2;
+  }
+  
+  int compareTo(Object other){
+    if (getX() > ((Projectile) other).getX()){
+      return -1;
+    }
+    else if (getX() == ((Projectile) other).getX()){
+      return 0;
+    }
+    else{
+      return 1;
+    }
   }
 }
