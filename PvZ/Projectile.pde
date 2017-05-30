@@ -22,7 +22,7 @@ class Projectile implements Comparable{
     //  ellipse(xCor, yCor, 10, 10);
   }
   
-  String toString(){
+  public String toString(){
     return "" + getX();
   }
 
@@ -60,7 +60,7 @@ class Projectile implements Comparable{
     x += 2;
   }
   
-  int compareTo(Object other){
+  public int compareTo(Object other){
     if (getX() > ((Projectile) other).getX()){
       return -1;
     }
