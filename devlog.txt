@@ -7,7 +7,7 @@ OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   wow we so BOSS bc...
   - we got projectiles to hit first zombie in row
-  -
+  - we got every row to work!
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -78,17 +78,34 @@ David   :: started Sunlight class
 
 @2017-05-26
 --------------------------------------------------------------
-MagentaRainBoots : quickly wrapped up sunlight collision and implemented counter
-Jesse, Henry: started implementing grid organization for plants (a 2D array)
-David: finished adding MergeSort code to the PvZ file.
+Jesse, David, Henry   :: quickly wrapped up sunlight collision and implemented counter
+Jesse, Henry   :: started implementing grid organization for plants (a 2D array)
+David   :: finished adding MergeSort code to the PvZ file.
 ==============================================================
 
 @2017-05-27
 --------------------------------------------------------------
-
+Jesse, David, Henry   :: thought about how to implement MergeSort and Heaps
 ==============================================================
 
 @2017-05-28
 --------------------------------------------------------------
+David, Henry   :: tried to implement heaps, but did not finish
+==============================================================
 
+@2017-05-29
+--------------------------------------------------------------
+David, Henry   :: updated README file
+==============================================================
+
+@2017-05-30
+--------------------------------------------------------------
+Jesse, David, Henry   :: got every row to work with plants, zombies, and projectiles. v1 complete???
+Jesse   :: updated flowchart
+David   :: updated UML diagram
+==============================================================
+
+@2017-05-31
+--------------------------------------------------------------
+Jesse, David, Henry   :: //
 ==============================================================
