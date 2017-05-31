@@ -40,6 +40,7 @@ ArrayList<Projectile> projectile5 = new ArrayList<Projectile>();
 int time = 0;
 int sunlight = 500;
 boolean plantclicked = false;
+boolean start = false;
 
 //******************************************************************************\\                                                      
 ////////////////////////// WARNING: ENTERING MERGE SORT \\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -179,45 +180,51 @@ void setup() {
 
 void draw() {
   frameRate(60); //sets basic parameters
-  background(25, 150, 25); 
-  display();
-  time += 1;
-  if (time%300 == 0 && sunspots.size() < 5) {
-    sunspots.add(new Sunlight(random(800), 0));
-  }
-  for (Sunlight x : sunspots) {
-    x.move();
-  }
+  if (start == false) {
+    background(0, 0, 0);
+    display();
+  } else {
+    background(25, 150, 25); 
+    display();
+    time += 1;
+    if (time%300 == 0 && sunspots.size() < 5) {
+      sunspots.add(new Sunlight(random(800), 0));
+    }
+    for (Sunlight x : sunspots) {
+      x.move();
+    }
 
-  for (int i = 0; i < plants.length; i++) {
-    for (int j = 0; j < plants[i].length; j++) {
-      if (plants[i][j] != null) {//move projectiles
-        plants[i][j].move();
-        //System.out.println("plant moved");
-        ArrayList<Projectile> arr = plants[i][j].getProjectiles();
-        if (i == 0 && time % 30 == 0) {
-          projectile1.add(arr.get(arr.size()-1) );
-          // System.out.println(time);
-          //System.out.println("projectile added to heap");
-        }
-        if (i == 1 && time % 30 == 0) {
-          projectile2.add(arr.get(arr.size()-1) );
-        } else if (i == 2 && time % 30 == 0) {
-          projectile3.add(arr.get(arr.size()-1) );
-        } else if (i == 3 && time % 30 == 0) {
-          projectile4.add(arr.get(arr.size()-1) );
-        } else if (i == 4 && time % 30 == 0) {
-          projectile5.add(arr.get(arr.size()-1) );
+    for (int i = 0; i < plants.length; i++) {
+      for (int j = 0; j < plants[i].length; j++) {
+        if (plants[i][j] != null) {//move projectiles
+          plants[i][j].move();
+          //System.out.println("plant moved");
+          ArrayList<Projectile> arr = plants[i][j].getProjectiles();
+          if (i == 0 && time % 30 == 0) {
+            projectile1.add(arr.get(arr.size()-1) );
+            // System.out.println(time);
+            //System.out.println("projectile added to heap");
+          }
+          if (i == 1 && time % 30 == 0) {
+            projectile2.add(arr.get(arr.size()-1) );
+          } else if (i == 2 && time % 30 == 0) {
+            projectile3.add(arr.get(arr.size()-1) );
+          } else if (i == 3 && time % 30 == 0) {
+            projectile4.add(arr.get(arr.size()-1) );
+          } else if (i == 4 && time % 30 == 0) {
+            projectile5.add(arr.get(arr.size()-1) );
+          }
         }
       }
     }
   }
-
-  drawRow(projectile1, zombies1_offfield, zombies1_onfield, zombies1_nextfield); 
-  drawRow(projectile2, zombies2_offfield, zombies2_onfield, zombies2_nextfield); 
-  drawRow(projectile3, zombies3_offfield, zombies3_onfield, zombies3_nextfield); 
-  drawRow(projectile4, zombies4_offfield, zombies4_onfield, zombies4_nextfield); 
-  drawRow(projectile5, zombies5_offfield, zombies5_onfield, zombies5_nextfield); 
+  if (start == true) {
+    drawRow(projectile1, zombies1_offfield, zombies1_onfield, zombies1_nextfield); 
+    drawRow(projectile2, zombies2_offfield, zombies2_onfield, zombies2_nextfield); 
+    drawRow(projectile3, zombies3_offfield, zombies3_onfield, zombies3_nextfield); 
+    drawRow(projectile4, zombies4_offfield, zombies4_onfield, zombies4_nextfield); 
+    drawRow(projectile5, zombies5_offfield, zombies5_onfield, zombies5_nextfield);
+  }
 
 
 
@@ -249,52 +256,65 @@ void draw() {
 }
 
 void display() { 
-  //line separation of field and store
-  fill(150); 
-  stroke(0);
-  line(0, 60, 800, 60);
+  if (start == false) {
+    rect(300,280, 200, 100, 15);
+    //fill(200);
+    text("Start", 400, 315);
+  } 
+  else {
+    //line separation of field and store
+    fill(150); 
+    stroke(0);
+    line(0, 60, 800, 60);
 
-  //line separating rows for field
-  stroke(255);
-  line(0, 180, 800, 180);
-  line(0, 300, 800, 300);
-  line(0, 420, 800, 420);
-  line(0, 540, 800, 540);
+    //line separating rows for field
+    stroke(255);
+    line(0, 180, 800, 180);
+    line(0, 300, 800, 300);
+    line(0, 420, 800, 420);
+    line(0, 540, 800, 540);
 
-  //line separating columns for field
-  line(100, 60, 100, 660);
-  line(200, 60, 200, 660);
-  line(300, 60, 300, 660);
-  line(400, 60, 400, 660);
-  line(500, 60, 500, 660);
-  line(600, 60, 600, 660);
-  line(700, 60, 700, 660);
+    //line separating columns for field
+    line(100, 60, 100, 660);
+    line(200, 60, 200, 660);
+    line(300, 60, 300, 660);
+    line(400, 60, 400, 660);
+    line(500, 60, 500, 660);
+    line(600, 60, 600, 660);
+    line(700, 60, 700, 660);
 
-  //sunlight statistic showing
-  fill(0);
-  textSize(18);
-  text("sunlight", 25, 25);
-  text(sunlight, 25, 50);
-  text("||", 100, 25);
-  text("plant", 125, 25);
-  text("||", 175, 25);//test
+    //sunlight statistic showing
+    fill(0);
+    textSize(18);
+    text("sunlight", 25, 25);
+    text(sunlight, 25, 50);
+    text("||", 100, 25);
+    text("plant", 125, 25);
+    text("||", 175, 25);//test
+  }
 }
 void mouseClicked() {
-  for (int i = 0; i < sunspots.size(); i++) {
-    if (sunspots.get(i).hit(mouseX, mouseY)) {
-      sunlight += 25;
-      sunspots.remove(i);
+  if (start == false) {
+    if (mouseX >= 300 && mouseX <= 500 && mouseY >= 280 && mouseY <= 380) {
+      start = true;
     }
-  }
-  if (plantclicked) {
-    int r = (mouseY - 60) / 120;
-    int c = mouseX / 100;
-    plants[r][c] = new Plant(c*100+25, r*120+95);
-    plantclicked = false;
-    sunlight -= 50;
-  }
-  if (sunlight >= 50 && mouseX >= 110 && mouseX <= 175 && mouseY >= 10 && mouseY <= 35 ) {
-    System.out.println("plant hit");
-    plantclicked = true;
+  } else {
+    for (int i = 0; i < sunspots.size(); i++) {
+      if (sunspots.get(i).hit(mouseX, mouseY)) {
+        sunlight += 25;
+        sunspots.remove(i);
+      }
+    }
+    if (plantclicked) {
+      int r = (mouseY - 60) / 120;
+      int c = mouseX / 100;
+      plants[r][c] = new Plant(c*100+25, r*120+95);
+      plantclicked = false;
+      sunlight -= 50;
+    }
+    if (sunlight >= 50 && mouseX >= 110 && mouseX <= 175 && mouseY >= 10 && mouseY <= 35 ) {
+      System.out.println("plant hit");
+      plantclicked = true;
+    }
   }
 }
