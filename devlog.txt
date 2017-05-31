@@ -100,7 +100,7 @@ David, Henry   :: updated README file
 
 @2017-05-30
 --------------------------------------------------------------
-Jesse, David, Henry   :: got every row to work with plants, zombies, and projectiles. v1 complete???
+Jesse, David, Henry   :: got every row to work with plants, zombies, and projectiles. Noticed mistake with projectile collision check. Fixed bug. v1 complete???
 Jesse   :: updated flowchart
 David   :: updated UML diagram
 ==============================================================
