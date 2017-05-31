@@ -1,0 +1,32 @@
+Team Name: MagentaRainBoots
+Team Members: Jesse Sit, David Apterman, Henry Zheng
+
+Priority:
+MergeSort + ArrayList for Zombies :
+   MergeSort code and ArrayLists are in, task now is to expand Zombie variability and complexity.
+
+1. Add in functionality of sunflower plant to create sunlight
+2. Create other different types of plants
+3. Create different types of zombies
+4. Create bosses and mini bosses?
+5. Expand game to multiple levels
+6. Implement different levels of difficulty
+
+
+
+
+Workload Sharing:
+One person can work to complete 1.
+Once 1 is completed, we can each work on a different type of plant, a different type of zombie, bosses, mini bosses, levels, etc.
+We can collaboratively work on these as well if needed.
+We will try to finish this by this weekend so that we can make any other necessary changes when we meet back together again over the weekend.
+
+
+
+Chronology:
+Work in order shown.
+Finish number 1 first.
+Create level 0.
+Need to create first level before moving on to other levels.
+Creating different types of plants and zombies.
+Need to implement easiest difficulty before attempting to implement harder difficulties.
