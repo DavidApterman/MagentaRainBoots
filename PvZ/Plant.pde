@@ -4,7 +4,7 @@ class Plant {
   int y; //y-pos of plant, doesn't change
   int health; //hp of plant 
   int damage; //damage inflicted by projectiles
-  int range; 
+  //int range; 
   ArrayList<Projectile> projectiles; //stores shots being fired by plant
   int shotCounter; //forces intervals between shots 
   int type;
@@ -16,7 +16,7 @@ class Plant {
     damage = 15;
     x = 25;
     y = 100;
-    range = x + 400;
+    //range = x + 400;
     projectiles = new ArrayList<Projectile>(10);
     shotCounter = 0;
     state = 1;

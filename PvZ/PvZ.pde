@@ -40,7 +40,8 @@ ArrayList<Projectile> projectile5 = new ArrayList<Projectile>();
 int time = 0;
 int sunlight = 500;
 boolean plantclicked = false;
-boolean start = false;
+boolean sunflowerclicked = false;
+boolean start = false;//start screen
  
 //******************************************************************************\\                                                      
 ////////////////////////// WARNING: ENTERING MERGE SORT \\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -164,23 +165,23 @@ Plant p = null;
 void setup() {
   size(800, 660); //generates board
   background(25, 150, 25); //sets board color 
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 4; i++) {//adds zombies to row 1
     Zombie test = new Zombie(800, 95);
     zombies1_offfield.add(test);
   }
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 4; i++) {//adds zombies to row 2
     Zombie test2 = new Zombie(800, 215);
     zombies2_offfield.add(test2);
   }
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 4; i++) {//adds zombies to row 3
     Zombie test3 = new Zombie(800, 335);
     zombies3_offfield.add(test3);
   }
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 4; i++) {//adds zombies to row 4
     Zombie test4 = new Zombie(800, 455);
     zombies4_offfield.add(test4);
   }
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 4; i++) {//adds zombies to row 5
     Zombie test5 = new Zombie(800, 575);
     zombies5_offfield.add(test5);
   }
@@ -188,10 +189,10 @@ void setup() {
  
 void draw() {
   frameRate(60); //sets basic parameters
-  if (start == false) {
+  if (start == false) {//start screen
     background(0, 0, 0);
     display();
-  } else {
+  } else {//everything else (game)
     background(25, 150, 25); 
     display();
     time += 1;
@@ -298,11 +299,13 @@ void display() {
     //sunlight statistic showing
     fill(0);
     textSize(18);
-    text("sunlight", 25, 25);
-    text(sunlight, 25, 50);
-    text("||", 100, 25);
-    text("plant", 125, 25);
-    text("||", 175, 25);//test
+    text("sunlight", 15, 25);
+    text(sunlight, 30, 50);
+    text("||", 93, 25);
+    text("plant", 128, 25);
+    text("||", 193, 25);
+    text("sunflower", 208, 25);
+    text("||", 293, 25);
   }
 }
 void mouseClicked() {
@@ -324,10 +327,23 @@ void mouseClicked() {
       plantclicked = false;
       sunlight -= 50;
     }
-    if (sunlight >= 50 && mouseX >= 110 && mouseX <= 175 && mouseY >= 10 && mouseY <= 35 ) {
+    if (sunlight >= 50 && mouseX >= 93 && mouseX <= 193 && mouseY >= 10 && mouseY <= 35 ) {
       System.out.println("plant hit");
       plantclicked = true;
     }
+    /*
+    if (sunflowerclicked) {
+      int r = (mouseY - 60) / 120;
+      int c = mouseX / 100;
+      plants[r][c] = new Sunflower(c*100+25, r*120+95);
+      sunflowerclicked = false;
+      sunlight -= 50;
+    }
+    if (sunlight >= 50 && mouseX >= 193 && mouseX <= 293 && mouseY >= 10 && mouseY <= 35 ) {
+      System.out.println("sunflower hit");
+      sunflowerclicked = true;
+    }
+    */
   }
 }
  
