@@ -127,7 +127,7 @@ Plant p = null;
       textSize(32);
       text("game over", 350, 300);
       noLoop();
-    } else if (p != null && p.getX() + 25 >= on.get(x).getX() - 25) {
+    } else if (p != null && p.getX() + 25 >= on.get(x).getX() - 25 && p.getX() <= on.get(x).getX()) {
       p.setHealth(on.get(x).getDamage() );
       on.get(x).display();
     } else {
