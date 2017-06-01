@@ -5,6 +5,7 @@ class Zombie { //implements Comparable {
   int health; // if health <= 0, change state to 0
   color c;
   int state; // if state = 0, zombie dies
+  int damage;
 
   //default constructor
   Zombie() {
@@ -17,6 +18,7 @@ class Zombie { //implements Comparable {
     health = 100;
     //y = ((int) random(5)) * 120 + 100;
     state = 1;
+    damage = 1;
   }
 
   //overloaded constructor
@@ -43,6 +45,9 @@ class Zombie { //implements Comparable {
   int getState() {
     return state;
   }
+  int getDamage() {
+    return damage;
+  }
 
   //mutators
   void setX(float newX) {
@@ -60,7 +65,13 @@ class Zombie { //implements Comparable {
   void setState(int newState) {
     state = newState;
   }
-
+  
+  
+ void die() {
+    if (health <= 0) {
+      state = 0;
+    }
+  }
   //displays the zombie
   void display() {
     if (x == -25) {
@@ -73,11 +84,6 @@ class Zombie { //implements Comparable {
     rect(x, y, 50, 50);
   }
 
-  void die() {
-    if (health <= 0) {
-      state = 0;
-    }
-  }
   void move() { 
     die();
     display();
