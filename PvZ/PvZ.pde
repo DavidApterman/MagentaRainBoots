@@ -114,7 +114,12 @@ void drawRow(ArrayList<Projectile> heap, ArrayList<Zombie> off, ArrayList<Zombie
       on.add(off.remove(0)); //if there are more zombies to spawn, by all means
     }
   }
-
+  
+    for (int i = 0; i < plants[rowNum].length; i++) {
+    if (plants[rowNum][i] != null) {
+      p = plants[rowNum][i];
+    }
+  }
 
   for (int x = 0; x < on.size(); x++) { //checks if a zombie has reached the end of the row, which would cause a game over
     if (on.get(x).getX() <= -25) { //if true, zombie reached end
@@ -122,7 +127,12 @@ void drawRow(ArrayList<Projectile> heap, ArrayList<Zombie> off, ArrayList<Zombie
       textSize(32);
       text("game over", 350, 300);
       noLoop();
-    } else {
+    } 
+    else if (p != null && p.getX() + 25 >= on.get(x).getX() - 25) {
+      p.setHealth(on.get(x).getDamage() );
+      on.get(x).display();
+      }
+      else {
       on.get(x).move();
     }
     // System.out.println(heap.peekMin() );
@@ -195,9 +205,12 @@ void draw() {
     }
 
     for (int i = 0; i < plants.length; i++) {
-      for (int j = 0; j < plants[i].length; j++) {
-        if (plants[i][j] != null) {//move projectiles
-          plants[i][j].move();
+    for (int j = 0; j < plants[i].length; j++) {
+      if (plants[i][j] != null && plants[i][j].getState() == 0) {
+        plants[i][j] = null;
+      }
+      if (plants[i][j] != null) {//move projectiles
+        plants[i][j].move();
           //System.out.println("plant moved");
           ArrayList<Projectile> arr = plants[i][j].getProjectiles();
           if (i == 0 && time % 30 == 0) {
