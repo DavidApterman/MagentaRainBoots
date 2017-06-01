@@ -12,7 +12,7 @@ class Plant {
 
   //default constructor
   Plant() {
-    health = 50;
+    health = 100;
     damage = 15;
     x = 25;
     y = 100;

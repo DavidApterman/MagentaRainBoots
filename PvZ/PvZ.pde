@@ -269,8 +269,10 @@ void draw() {
 void display() { 
   if (start == false) {
     rect(300, 280, 200, 100, 15);
-    //fill(200);
-    text("Start", 400, 315);
+    fill(0);
+    textSize(18);
+    text("Start", 380, 335);
+    fill(255);
   } else {
     //line separation of field and store
     fill(150); 
