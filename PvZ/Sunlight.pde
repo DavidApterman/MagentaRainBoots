@@ -34,6 +34,10 @@ class Sunlight {
   void setY(float newY) {
     y = newY;
   }
+  void setState(int newState) {
+    state = newState;
+  }
+  
   boolean hit(int mouseX, int mouseY) {
     if( mouseX > getX() - 12.5 && mouseX < getX() + 12.5 && mouseY > getY() - 12.5 && mouseY < getY() + 12.5) {
       setY(-25);
