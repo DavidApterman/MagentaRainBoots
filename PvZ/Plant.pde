@@ -8,6 +8,7 @@ class Plant {
   ArrayList<Projectile> projectiles; //stores shots being fired by plant
   int shotCounter; //forces intervals between shots 
   int type;
+  int state;
 
   //default constructor
   Plant() {
@@ -18,6 +19,7 @@ class Plant {
     range = x + 400;
     projectiles = new ArrayList<Projectile>(10);
     shotCounter = 0;
+    state = 1;
   }
   
   Plant (int xcor, int ycor){
@@ -36,6 +38,18 @@ class Plant {
   ArrayList<Projectile> getProjectiles() {
     return projectiles;
   }
+  int getState() {
+    return state;
+  }
+  
+  void setHealth(int damage) {
+    health -= damage;
+  }
+
+  void setState(int newState) {
+    state = newState;
+  }
+  
 
   void shoot() {
     if (shotCounter % 30 == 0) { //interval shots
@@ -45,12 +59,19 @@ class Plant {
     shotCounter++;
   } 
 
+   void die() {
+    if (health <= 0) {
+      state = 0;
+    }
+  }
+  
   void display() {
     fill(0, 255, 0);
     rect(x, y, 50, 50);
   }
 
   void move() {
+    die();
     display();
     shoot();
     for (int i = 0; i < projectiles.size()-1; i++) {
