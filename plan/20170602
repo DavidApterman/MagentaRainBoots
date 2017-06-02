@@ -1,0 +1,30 @@
+Team Name: MagentaRainBoots
+Team Members: Jesse Sit, David Apterman, Henry Zheng
+
+Priority:
+MergeSort + ArrayList for Zombies :
+   MergeSort code and ArrayLists are in, task now is to expand Zombie variability and complexity.
+
+1. Retrieve zombies from next_field to recycle in on_field or find another method of making new and stronger zombies.
+2. Expand game to multiple levels
+3. Create other different types of plants
+4. Create different types of zombies
+5. Create bosses and mini bosses?
+6. Implement different levels of difficulty
+
+
+
+
+Workload Sharing:
+we can each work on a different type of plant, a different type of zombie, bosses, mini bosses, levels, etc.
+We can collaboratively work on these as well if needed.
+We will try to finish this by this weekend so that we can make any other necessary changes when we meet back together again over the weekend.
+
+
+
+Chronology:
+Work in order shown.
+Create level 0.
+Need to create first level before moving on to other levels.
+Creating different types of plants and zombies.
+Need to implement easiest difficulty before attempting to implement harder difficulties.
