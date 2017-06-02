@@ -8,6 +8,8 @@ OBSTACLES OVERCOME
   wow we so BOSS bc...
   - we got projectiles to hit first zombie in row
   - we got every row to work!
+  - we created working peashooter class!
+  - we created working sunlight class!
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -16,13 +18,15 @@ UNRESOLVED ISSUES
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   - wow! oo!...
-  - 
+  - processing is pretty neat. it can handle a ton of stuff.
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   we changed ___ to ___ bc...
   - we changed zombie queues to ArrayLists bc we realized queues were not needed
   - we changed projectile queues to heaps bc we realized it was a good idea to implement them as heaps based on the very definition of heaps
+  - we created a parent class of plant and subclasses of peashooter and sunflower in order to keep plant array working in PvZ
+
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   - we don't have to overcomplicate things. simplicity is key
@@ -108,16 +112,15 @@ David   :: updated UML diagram
 @2017-05-31
 --------------------------------------------------------------
 David   :: made class peashooter and sunflower extend plant
-Jesse and David   :: added sunlight production capability to sunflower
-Jesse   :: started the start page
-Henry   :: cleaned up start page
+Jesse, Henry   :: started the start page
+Jesse, David   :: added sunlight production capability to sunflower
 ==============================================================
 
 @2017-06-01
 --------------------------------------------------------------
 David   :: cleaned up code and added in-line comments, updated UML diagram
 Jesse   :: tried to retrieve zombies from next_field to recycle, updated flowchart, updated devlog
-Henry   :: continued on start page
+Henry   :: continued on start page, cleaned up plan and devlog
 ==============================================================
 
 @2017-06-02

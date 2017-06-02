@@ -70,7 +70,7 @@ class Sunflower extends Plant {
   }
 
   void display() {
-    fill(100, 255, 0);
+    fill(255, 255, 0);
     rect(x, y, 50, 50);
   }
 

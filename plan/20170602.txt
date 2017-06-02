@@ -5,7 +5,7 @@ Priority:
 MergeSort + ArrayList for Zombies :
    MergeSort code and ArrayLists are in, task now is to expand Zombie variability and complexity.
 
-1. Retrieve zombies from next_field to recycle in on_field or find another method of making new and stronger zombies.
+1. Retrieve zombies from next_field to recycle in on_field or find another method of making new and stronger zombies/bosses.
 2. Expand game to multiple levels
 3. Create other different types of plants
 4. Create different types of zombies

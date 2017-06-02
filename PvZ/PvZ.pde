@@ -302,7 +302,7 @@ void display() {
     text("sunlight", 15, 25);
     text(sunlight, 30, 50);
     text("||", 93, 25);
-    text("plant", 128, 25);
+    text("peashooter", 100, 25);
     text("||", 193, 25);
     text("sunflower", 208, 25);
     text("||", 293, 25);
