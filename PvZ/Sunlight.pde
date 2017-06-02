@@ -50,7 +50,7 @@ class Sunlight {
 
   void display() {
     fill(c);
-    noStroke();
+    stroke(0);
     ellipse(x, y, 25, 25);
   }
 

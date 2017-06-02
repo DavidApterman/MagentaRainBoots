@@ -195,7 +195,7 @@ void setup() {
 
 void draw() {
   ArrayList<Projectile> arr = null;
-  frameRate(45); //sets basic parameters
+  frameRate(60); //sets basic parameters
   if (start == false) {//start screen
     background(0, 0, 0);
     display();
