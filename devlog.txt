@@ -107,5 +107,25 @@ David   :: updated UML diagram
 
 @2017-05-31
 --------------------------------------------------------------
+David   :: made class peashooter and sunflower extend plant
+Jesse and David   :: added sunlight production capability to sunflower
+Jesse   :: started the start page
+Henry   :: cleaned up start page
+==============================================================
+
+@2017-06-01
+--------------------------------------------------------------
+David   :: cleaned up code and added in-line comments, updated UML diagram
+Jesse   :: tried to retrieve zombies from next_field to recycle, updated flowchart, updated devlog
+Henry   :: continued on start page
+==============================================================
+
+@2017-06-02
+--------------------------------------------------------------
+Jesse, David, Henry   :: //
+==============================================================
+
+@2017-06-03
+--------------------------------------------------------------
 Jesse, David, Henry   :: //
 ==============================================================
