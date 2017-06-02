@@ -2,9 +2,9 @@ class Sunlight {
 
   float x; // x-position of ball in row
   float y; // y-position of ball, should not be changed post-generation
-  //int speed; //determines how fast projectile moves down the row
   color c;
-  int state;
+  int state; //checker for if harvested
+  //int speed; //determines how fast projectile moves down the row
 
   Sunlight() {
     float r = 255;
@@ -37,9 +37,10 @@ class Sunlight {
   void setState(int newState) {
     state = newState;
   }
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  
   
   boolean hit(int mouseX, int mouseY) {
-    if( mouseX > getX() - 12.5 && mouseX < getX() + 12.5 && mouseY > getY() - 12.5 && mouseY < getY() + 12.5) {
+    if( mouseX > getX() - 12.5 && mouseX < getX() + 12.5 && mouseY > getY() - 12.5 && mouseY < getY() + 12.5) { //checks if Sunlight is clicked 
       setY(-25);
       return true;
     }

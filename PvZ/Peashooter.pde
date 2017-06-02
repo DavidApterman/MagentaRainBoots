@@ -4,11 +4,10 @@ class Peashooter extends Plant {
   int y; //y-pos of plant, doesn't change
   int health; //hp of plant 
   int damage; //damage inflicted by projectiles
-  //int range; 
   ArrayList<Projectile> projectiles; //stores shots being fired by plant
   int shotCounter; //forces intervals between shots 
-  int type;
-  int state;
+  int type; //tells game which type of plant it's dealing with
+  int state; //checker for if plant has died 
 
   //default constructor
   Peashooter() {
@@ -22,8 +21,8 @@ class Peashooter extends Plant {
     projectiles = new ArrayList<Projectile>(10);
     type = 1;
   }
-  
-  Peashooter (int xcor, int ycor){
+
+  Peashooter (int xcor, int ycor) {
     this();
     x = xcor;
     y = ycor;
@@ -45,10 +44,11 @@ class Peashooter extends Plant {
   int getDamage() {
     return damage;
   }
-     int getType() {
+  int getType() {
     return type;
   }
   
+  //mutators
   void setHealth(int damage) {
     health -= damage;
   }
@@ -57,13 +57,14 @@ class Peashooter extends Plant {
     state = newState;
   }
   
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   void die() {
+  void die() {
     if (health <= 0) {
       state = 0;
     }
   }
-  
+
   void shoot() {
     if (shotCounter % 30 == 0) { //interval shots
       Projectile proj = new Projectile(x, y, damage);
@@ -71,23 +72,18 @@ class Peashooter extends Plant {
     }
     shotCounter++;
   } 
-  
-  
+
   void display() {
     fill(0, 255, 0);
     rect(x, y, 50, 50);
   }
 
-
-   void move() {
-    die();
-    display();
-    shoot();
+  void move() {
+    die();          //remove if dead (ready)
+    display();      //display if not (aim)
+    shoot();        //FIRE
     for (int i = 0; i < projectiles.size()-1; i++) {
-      projectiles.get(i).move();
+      projectiles.get(i).move();  //updates projectile x-coordinate (displayment of projectiles dependent on master heap)
     }
   }
-
 }
-
-  

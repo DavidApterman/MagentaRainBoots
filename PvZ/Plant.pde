@@ -3,12 +3,8 @@ class Plant {
   int x; //x-pos of plant, doesn't change
   int y; //y-pos of plant, doesn't change
   int health; //hp of plant 
-  //int damage; //damage inflicted by projectiles
-  //int range; 
-  //ArrayList<Projectile> projectiles; //stores shots being fired by plant
-  //int shotCounter; //forces intervals between shots 
-  int type;
-  int state;
+  int type; //tells game which type of plant it's dealing with
+  int state; //checker for if plant has died 
 
   //default constructor
   Plant() {
@@ -18,8 +14,8 @@ class Plant {
     //range = x + 400;
     state = 1;
   }
-  
-  Plant (int xcor, int ycor){
+
+  Plant (int xcor, int ycor) {
     this();
     x = xcor;
     y = ycor;
@@ -35,10 +31,11 @@ class Plant {
   int getState() {
     return state;
   }
-   int getType() {
+  int getType() {
     return type;
   }
-  
+
+  //mutators
   void setHealth(int damage) {
     health -= damage;
   }
@@ -46,14 +43,14 @@ class Plant {
   void setState(int newState) {
     state = newState;
   }
-  
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  
 
-   void die() {
+  void die() {
     if (health <= 0) {
       state = 0;
     }
   }
-  
+
   void display() {
     fill(0, 255, 0);
     rect(x, y, 50, 50);
@@ -62,5 +59,5 @@ class Plant {
   void move() {
     die();
     display();
-    }
   }
+}

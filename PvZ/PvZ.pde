@@ -1,47 +1,106 @@
 //import java.util.*;
 
-ArrayList<Zombie> zombies1_offfield = new ArrayList<Zombie>(); //all zombies for level
-ArrayList<Zombie> zombies1_onfield = new ArrayList<Zombie>();  //all zombies currently on screen
+ArrayList<Zombie> zombies1_offfield = new ArrayList<Zombie>();                                         //all zombies for level
+ArrayList<Zombie> zombies1_onfield = new ArrayList<Zombie>();                                          //all zombies currently on screen
 ArrayList<Zombie> zombies1_nextfield = new ArrayList<Zombie>();
 
 
-ArrayList<Zombie> zombies2_offfield = new ArrayList<Zombie>(); //all zombies for level
-ArrayList<Zombie> zombies2_onfield = new ArrayList<Zombie>();  //all zombies currently on screen
+ArrayList<Zombie> zombies2_offfield = new ArrayList<Zombie>();                                         //all zombies for level
+ArrayList<Zombie> zombies2_onfield = new ArrayList<Zombie>();                                          //all zombies currently on screen
 ArrayList<Zombie> zombies2_nextfield = new ArrayList<Zombie>();
 
 
-ArrayList<Zombie> zombies3_offfield = new ArrayList<Zombie>(); //all zombies for level
-ArrayList<Zombie> zombies3_onfield = new ArrayList<Zombie>();  //all zombies currently on screen
+ArrayList<Zombie> zombies3_offfield = new ArrayList<Zombie>();                                         //all zombies for level
+ArrayList<Zombie> zombies3_onfield = new ArrayList<Zombie>();                                          //all zombies currently on screen
 ArrayList<Zombie> zombies3_nextfield = new ArrayList<Zombie>();
 
 
-ArrayList<Zombie> zombies4_offfield = new ArrayList<Zombie>(); //all zombies for level
-ArrayList<Zombie> zombies4_onfield = new ArrayList<Zombie>();  //all zombies currently on screen
+ArrayList<Zombie> zombies4_offfield = new ArrayList<Zombie>();                                         //all zombies for level
+ArrayList<Zombie> zombies4_onfield = new ArrayList<Zombie>();                                          //all zombies currently on screen
 ArrayList<Zombie> zombies4_nextfield = new ArrayList<Zombie>();
 
 
-ArrayList<Zombie> zombies5_offfield = new ArrayList<Zombie>(); //all zombies for level
-ArrayList<Zombie> zombies5_onfield = new ArrayList<Zombie>();  //all zombies currently on screen
+ArrayList<Zombie> zombies5_offfield = new ArrayList<Zombie>();                                         //all zombies for level
+ArrayList<Zombie> zombies5_onfield = new ArrayList<Zombie>();                                          //all zombies currently on screen
 ArrayList<Zombie> zombies5_nextfield = new ArrayList<Zombie>();
 
-ArrayList<Sunlight> sunspots = new ArrayList<Sunlight>(); 
+ArrayList<Sunlight> sunspots = new ArrayList<Sunlight>();                                              //holds dropping Sunlight packets
 
-Plant[][] plants = new Plant[5][8];
+Plant[][] plants = new Plant[5][8];                                                                    //stores all plants on field in 2D grid
+
+//store projectiles for each row
+ArrayList<Projectile> projectile1 = new ArrayList<Projectile>();  
+ArrayList<Projectile> projectile2 = new ArrayList<Projectile>();
+ArrayList<Projectile> projectile3 = new ArrayList<Projectile>();
+ArrayList<Projectile> projectile4 = new ArrayList<Projectile>();
+ArrayList<Projectile> projectile5 = new ArrayList<Projectile>();
+int time = 0;                                                                                           //global timer for game
+int sunlight = 500;                                                                                     //starting sunlight (currently high for testing)
+int plantclicked = 0;                                                                                   //stores type of plant after user selection to place correct breed
+boolean start = false;                                                                                  //start screen display boolean
+
+//Do not disturb (for now)
 //ALHeap projectile1 = new ALHeap();
 //ALHeap projectile2 = new ALHeap();
 //ALHeap projectile3 = new ALHeap();
 //ALHeap projectile4 = new ALHeap();
 //ALHeap projectile5 = new ALHeap();
-ArrayList<Projectile> projectile1 = new ArrayList<Projectile>();
-ArrayList<Projectile> projectile2 = new ArrayList<Projectile>();
-ArrayList<Projectile> projectile3 = new ArrayList<Projectile>();
-ArrayList<Projectile> projectile4 = new ArrayList<Projectile>();
-ArrayList<Projectile> projectile5 = new ArrayList<Projectile>();
-int time = 0;
-int sunlight = 500;
-int plantclicked = 0;
-boolean sunflowerclicked = false;
-boolean start = false;//start screen
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+//mini "draw" method for each row, uses row-specific variables to ensure equivalent/compact running for each row
+void drawRow(ArrayList<Projectile> heap, ArrayList<Zombie> off, ArrayList<Zombie> on, ArrayList<Zombie> next, int rowNum) {
+  Plant p = null;
+
+  if (time % 300 == 0) { //maintain rate of zombies
+    if (!off.isEmpty()) {
+      on.add(off.remove(0)); //if there are more zombies to spawn, by all means
+    }
+  }
+
+  for (int i = 0; i < plants[rowNum].length; i++) {  //sets target plant p to point to the furthest plant in the row
+    if (plants[rowNum][i] != null) {
+      p = plants[rowNum][i];
+    }
+  }
+
+  for (int x = 0; x < on.size(); x++) { //checks if a zombie has reached the end of the row, which would cause a game over
+    if (on.get(x).getX() <= -25) { //if true, zombie reached end
+      on.get(x).display();
+      textSize(32);
+      text("game over", 350, 300);
+      noLoop();
+    } else if (p != null && p.getX() + 25 >= on.get(x).getX() - 25 && p.getX() <= on.get(x).getX()) {    //detects plant-zombie collision
+      p.setHealth(on.get(x).getDamage() );
+      on.get(x).display();
+    } else {                                                                                            //moves zombies forward
+      on.get(x).move();
+    }
+
+    for (int i = 0; i < heap.size(); i++) {
+      if (x < on.size() &&
+        heap.get(i).getX() + 5 >= on.get(x).getX() - 25 &&
+        heap.get(i).getX() + 5 <= on.get(x).getX() - 20) {  //checks collision between shot and zombie
+        on.get(x).setHealth(heap.get(i).getDamage()); //damage zombies
+
+        if (on.get(x).getState() == 0) {   //if a zombie is dead, off it goes off the screen and to zombie heaven
+          next.add(on.get(x)); //add to nextfield
+          on.remove(on.get(x)); //remove zombies after death
+          if (on.isEmpty()) { //for changes in # of zombies1_onfield during runtime
+            return;
+          }
+        }
+        heap.remove(i);  //removes projectiles from heap if they hit a zombie
+      }
+    }
+  }
+  for (Projectile j : heap ) {
+    j.display();        //display projectiles AFTER calculating collisions
+  }
+}
+
 
 //******************************************************************************\\                                                      
 ////////////////////////// WARNING: ENTERING MERGE SORT \\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -107,60 +166,6 @@ ArrayList<Zombie>  sort( ArrayList<Zombie>  arr ) {
 ////////////////////////// WARNING: LEAVING MERGE SORT \\\\\\\\\\\\\\\\\\\\\\\\\\
 //******************************************************************************\\ 
 
-void drawRow(ArrayList<Projectile> heap, ArrayList<Zombie> off, ArrayList<Zombie> on, ArrayList<Zombie> next, int rowNum) {
-  Plant p = null;
-
-  if (time % 300 == 0) { //maintain rate of zombies
-    if (!off.isEmpty()) {
-      on.add(off.remove(0)); //if there are more zombies to spawn, by all means
-    }
-  }
-
-  for (int i = 0; i < plants[rowNum].length; i++) {
-    if (plants[rowNum][i] != null) {
-      p = plants[rowNum][i];
-    }
-  }
-
-  for (int x = 0; x < on.size(); x++) { //checks if a zombie has reached the end of the row, which would cause a game over
-    if (on.get(x).getX() <= -25) { //if true, zombie reached end
-      on.get(x).display();
-      textSize(32);
-      text("game over", 350, 300);
-      noLoop();
-    } else if (p != null && p.getX() + 25 >= on.get(x).getX() - 25 && p.getX() <= on.get(x).getX()) {
-      p.setHealth(on.get(x).getDamage() );
-      on.get(x).display();
-    } else {
-      on.get(x).move();
-    }
-    // System.out.println(heap.peekMin() );
-    for (int i = 0; i < heap.size(); i++) {
-      if (x < on.size() &&
-        heap.get(i).getX() + 5 >= on.get(x).getX() - 25 &&
-        heap.get(i).getX() + 5 <= on.get(x).getX() - 20) {  //checks collision between shot and zombie
-        //System.out.println("projectiles size: " + testp.getProjectiles().size());
-        System.out.println("collision detected ");
-        on.get(x).setHealth(heap.get(i).getDamage()); //damage zombies
-        //System.out.println(zombies1_onfield.get(x).getHealth());  //s.o.p
-        //System.out.println(zombies1_onfield.get(x).getState());
-        if (on.get(x).getState() == 0) {   //if a zombe is dead, off it goes off the screen and to zombie heaven
-          next.add(on.get(x)); //add to nextfield
-          on.remove(on.get(x)); //remove zombies after death
-          if (on.isEmpty()) { //for changes in # of zombies1_onfield during runtime
-            return;
-          }
-        }
-        heap.remove(i);
-        // System.out.println(heap.removeMin()); //projectile is removed from screen
-        //   System.out.println("projectile removed");
-      }
-    }
-  }
-  for (Projectile j : heap ) {
-    j.display();
-  }
-}
 
 void setup() {
   size(800, 660); //generates board
@@ -200,25 +205,23 @@ void draw() {
     if (time%300 == 0 && sunspots.size() < 5) {
       sunspots.add(new Sunlight(random(800), 0));
     }
-    for (Sunlight x : sunspots) {
+    for (Sunlight x : sunspots) {  
       x.move();
     }
 
     for (int i = 0; i < plants.length; i++) {
       for (int j = 0; j < plants[i].length; j++) {
-        if (plants[i][j] != null && plants[i][j].getState() == 0) {
+        if (plants[i][j] != null && plants[i][j].getState() == 0) { //removes dead plant from the field 
           plants[i][j] = null;
         }
         if (plants[i][j] != null) {//move projectiles
           plants[i][j].move();
-          //System.out.println("plant moved");
-          if (plants[i][j].getType() == 1) {
+
+          if (plants[i][j].getType() == 1) {  //takes projectiles from peashooters into heap
             arr = ((Peashooter)(plants[i][j])).getProjectiles();
           }
           if (arr != null && i == 0 && time % 30 == 0 ) {
             projectile1.add(arr.get(arr.size()-1) );
-            // System.out.println(time);
-            //System.out.println("projectile added to heap");
           } else if (arr!= null && i == 1 && time % 30 == 0) {
             projectile2.add(arr.get(arr.size()-1) );
           } else if (arr != null && i == 2 && time % 30 == 0) {
@@ -232,41 +235,13 @@ void draw() {
       }
     }
   }
-  if (start == true) {
+  if (start == true) { //runs game for each row
     drawRow(projectile1, zombies1_offfield, zombies1_onfield, zombies1_nextfield, 0); 
     drawRow(projectile2, zombies2_offfield, zombies2_onfield, zombies2_nextfield, 1); 
     drawRow(projectile3, zombies3_offfield, zombies3_onfield, zombies3_nextfield, 2); 
     drawRow(projectile4, zombies4_offfield, zombies4_onfield, zombies4_nextfield, 3); 
     drawRow(projectile5, zombies5_offfield, zombies5_onfield, zombies5_nextfield, 4);
   }
-
-
-
-
-
-
-  /*
-      if (//x < zombies1_onfield.size() &&
-   testp.getProjectiles().get(0).getX() + 5 >= zombies1_onfield.get(x).getX() - 25 &&
-   testp.getProjectiles().get(0).getX() + 5 <= zombies1_onfield.get(x).getX() - 20) {  //checks collision between shot and zombie
-   //System.out.println("projectiles size: " + testp.getProjectiles().size());
-   zombies1_onfield.get(x).setHealth(testp.getProjectiles().get(i).getDamage()); //damage zombies
-   //System.out.println(zombies1_onfield.get(x).getHealth());  //s.o.p
-   //System.out.println(zombies1_onfield.get(x).getState());
-   if (zombies1_onfield.get(x).getState() == 0) {   //if a zombe is dead, off it goes off the screen and to zombie heaven
-   zombies1_nextfield.add(zombies1_onfield.get(x)); //add to nextfield
-   zombies1_onfield.remove(zombies1_onfield.get(x)); //remove zombies after death
-   if (zombies1_onfield.isEmpty()) { //for changes in # of zombies1_onfield during runtime
-   return;
-   }
-   }
-   testp.getProjectiles().remove(i); //projectile is removed from screen
-   }
-   */
-
-
-  //System.out.println(width);
-  //System.out.println(test.y);
 }
 
 void display() { 
@@ -311,49 +286,47 @@ void display() {
   }
 }
 void mouseClicked() {
-  if (start == false) {
+  if (start == false) {  //checks if start button clicked 
     if (mouseX >= 300 && mouseX <= 500 && mouseY >= 280 && mouseY <= 380) {
       start = true;
     }
-  } else {
+  } else {  //checks if dropped Sunlight hit 
     for (int i = 0; i < sunspots.size(); i++) {
       if (sunspots.get(i).hit(mouseX, mouseY)) {
         sunlight += 25;
         sunspots.remove(i);
       }
     }
-    if (plantclicked != 0) {
+    for (int r = 0; r < plants.length; r++) {  //checks if Sunflower generated Sunlight hit
+      for (Plant x : plants[r]) {
+        if ( x != null && x.getType() == 2) {
+          for (int i = 0; i < ((Sunflower)x).getDropped().size(); i++) {
+            if ( ((Sunflower)x).getDropped().get(i).hit(mouseX, mouseY)) {
+              sunlight += 10;
+              ((Sunflower)x).getDropped().remove(i);
+            }
+          }
+        }
+      }
+    }
+
+    if (plantclicked != 0) {  //checks if plant placement option selected , places appropriate plant 
       int r = (mouseY - 60) / 120;
       int c = mouseX / 100;
-      if(plantclicked == 1) {
-      plants[r][c] = new Peashooter(c*100+25, r*120+95);
-      }
-      else if(plantclicked == 2) {
+      if (plantclicked == 1) {
+        plants[r][c] = new Peashooter(c*100+25, r*120+95);
+      } else if (plantclicked == 2) {
         plants[r][c] = new Sunflower(c*100+25, r*120+95);
       }
       plantclicked = 0;
       sunlight -= 50;
     }
-    if (sunlight >= 50 && mouseX >= 93 && mouseX <= 193 && mouseY >= 10 && mouseY <= 35 ) {
+    if (sunlight >= 50 && mouseX >= 93 && mouseX <= 193 && mouseY >= 10 && mouseY <= 35 ) { //detects click on peashooter button
       System.out.println("plant hit");
       plantclicked = 1;
-    }
-    else if( sunlight >= 50 && mouseX >= 193 && mouseX <= 293 && mouseY >= 10 && mouseY <= 35 ) {
+    } else if ( sunlight >= 50 && mouseX >= 193 && mouseX <= 293 && mouseY >= 10 && mouseY <= 35 ) { //detects click on sunflower button
       System.out.println("sunflower hit");
       plantclicked = 2;
     }
-    /*
-    if (sunflowerclicked) {
-     int r = (mouseY - 60) / 120;
-     int c = mouseX / 100;
-     plants[r][c] = new Sunflower(c*100+25, r*120+95);
-     sunflowerclicked = false;
-     sunlight -= 50;
-     }
-     if (sunlight >= 50 && mouseX >= 193 && mouseX <= 293 && mouseY >= 10 && mouseY <= 35 ) {
-     System.out.println("sunflower hit");
-     sunflowerclicked = true;
-     }
-     */
   }
 }

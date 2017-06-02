@@ -65,19 +65,19 @@ class Zombie { //implements Comparable {
   void setState(int newState) {
     state = newState;
   }
-  
-  
- void die() {
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  void die() {
     if (health <= 0) {
       state = 0;
     }
   }
+  
   //displays the zombie
   void display() {
     if (x == -25) {
       fill(255, 0, 0);
-    }
-    else {
+    } else {
       fill(150);
     }
     noStroke();
@@ -89,18 +89,4 @@ class Zombie { //implements Comparable {
     display();
     x -= 1;
   }
-
-  // void hit( Projectile p){
-  //   if (p.getX() + 5 <= x - 20){
-
-
-  /*int compareTo(Object other) {
-    if (x > ((Zombie) other).getX()) {
-      return -1;
-    } else if (x == ((Zombie) other).getX()) {
-      return 0;
-    } else {
-      return 1;
-    }
-  }*/
 }

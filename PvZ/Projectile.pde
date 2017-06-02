@@ -1,10 +1,10 @@
-class Projectile implements Comparable{
+class Projectile implements Comparable {
 
   float x; // x-position of ball in row
   float y; // y-position of ball, should not be changed post-generation
-  //int speed; //determines how fast projectile moves down the row
   int damage; //determines the bang of your buck
   color c;
+  //int speed; //determines how fast projectile moves down the row
 
   //default constructor
   Projectile() {
@@ -21,8 +21,8 @@ class Projectile implements Comparable{
     damage = dmg;
     //  ellipse(xCor, yCor, 10, 10);
   }
-  
-  public String toString(){
+
+  public String toString() {
     return "" + getX();
   }
 
@@ -56,18 +56,16 @@ class Projectile implements Comparable{
   }
 
   void move() {
-   // display();
+    // display();
     x += 2;
   }
-  
-  public int compareTo(Object other){
-    if (getX() > ((Projectile) other).getX()){
+
+  public int compareTo(Object other) { //comparable for heap
+    if (getX() > ((Projectile) other).getX()) {
       return -1;
-    }
-    else if (getX() == ((Projectile) other).getX()){
+    } else if (getX() == ((Projectile) other).getX()) {
       return 0;
-    }
-    else{
+    } else {
       return 1;
     }
   }
