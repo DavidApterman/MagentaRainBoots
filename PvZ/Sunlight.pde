@@ -37,14 +37,13 @@ class Sunlight {
   void setState(int newState) {
     state = newState;
   }
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  
-  
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  
+
   boolean hit(int mouseX, int mouseY) {
-    if( mouseX > getX() - 12.5 && mouseX < getX() + 12.5 && mouseY > getY() - 12.5 && mouseY < getY() + 12.5) { //checks if Sunlight is clicked 
+    if ( mouseX > getX() - 12.5 && mouseX < getX() + 12.5 && mouseY > getY() - 12.5 && mouseY < getY() + 12.5) { //checks if Sunlight is clicked 
       setY(-25);
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   }
@@ -57,11 +56,11 @@ class Sunlight {
 
   void move() {
     display();
-    int a = (int)random(100,600);
-    if(y < a + 1 && y > a - 1 || y >= 600){
-    state = 0;
+    int a = (int)random(100, 600);
+    if (y < a + 1 && y > a - 1 || y >= 600) {
+      state = 0;
     }
-    if(state != 0) {
+    if (state != 0) {
       y += 1;
     }
   }

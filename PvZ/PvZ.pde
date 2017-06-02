@@ -38,6 +38,7 @@ int time = 0;                                                                   
 int sunlight = 500;                                                                                     //starting sunlight (currently high for testing)
 int plantclicked = 0;                                                                                   //stores type of plant after user selection to place correct breed
 boolean start = false;                                                                                  //start screen display boolean
+boolean info = false;
 
 //Do not disturb (for now)
 //ALHeap projectile1 = new ALHeap();
@@ -245,12 +246,34 @@ void draw() {
 }
 
 void display() { 
-  if (start == false) {
+  if (info == true) {
+    textSize(18);    
+    fill(255);    
+    text("You play a homeowner in the midst of a zombie apocalypse.", 100, 100);    
+    text("Your name is Al and you are an avid plant grower.", 100, 150);    
+    text("You sing to plants and somehow get them to grow immediately.", 100, 200);    
+    text("However, you need sunlight to grow these plants.", 100, 250);    
+    text("It's a good thing you have a sunflower plant then!", 100, 300);    
+    text("Sunlight also falls from the sun, so be sure to pick them up.", 100, 350);    
+    text("Your other plants shoot projectiles that damage the zombies.", 100, 400);    
+    fill(256, 0, 0);    
+    text("Your goal is to kill all of the zombies to protect yourself", 100, 490);    
+    text("from the zombies getting into your house and eating your brains.", 100, 520);    
+    fill(255);    
+    text("Good luck, and may the odds be ever in your favor.", 100, 600);    
+    rect(625, 5, 150, 75, 15);    
+    fill(0);    
+    text("Start", 680, 50);
+  } else if (start == false) {
     rect(300, 280, 200, 100, 15);
+    rect(300, 450, 200, 100, 15);
     fill(0);
     textSize(18);
     text("Start", 380, 335);
+    text("Info", 383, 505);
     fill(255);
+    textSize(72);    
+    text("V.T.L.F.C.U.H.C.", 130, 150);
   } else {
     //line separation of field and store
     fill(150); 
@@ -286,9 +309,17 @@ void display() {
   }
 }
 void mouseClicked() {
-  if (start == false) {  //checks if start button clicked 
+  if (info == true) {
+    if (mouseX >= 625 && mouseX <= 775 && mouseY >= 5 && mouseY <= 80) { 
+      start = true;    
+      info = false;
+    }
+  } else if (start == false) {//checks if start button clicked 
     if (mouseX >= 300 && mouseX <= 500 && mouseY >= 280 && mouseY <= 380) {
       start = true;
+    }
+    if (mouseX >= 300 && mouseX <= 500 && mouseY >= 450 && mouseY <= 550) {
+      info = true;
     }
   } else {  //checks if dropped Sunlight hit 
     for (int i = 0; i < sunspots.size(); i++) {
@@ -329,4 +360,4 @@ void mouseClicked() {
       plantclicked = 2;
     }
   }
-}
+}  

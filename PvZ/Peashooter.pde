@@ -47,7 +47,7 @@ class Peashooter extends Plant {
   int getType() {
     return type;
   }
-  
+
   //mutators
   void setHealth(int damage) {
     health -= damage;
@@ -56,8 +56,8 @@ class Peashooter extends Plant {
   void setState(int newState) {
     state = newState;
   }
-  
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   void die() {
     if (health <= 0) {
