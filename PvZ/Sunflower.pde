@@ -5,6 +5,7 @@ class Sunflower extends Plant {
   int health;
   int state;
   int sunTime;  //times sunlight generation 
+  int type;
   ArrayList<Sunlight> dropped = new ArrayList<Sunlight>(); //stores generated Sunlight 
 
 
