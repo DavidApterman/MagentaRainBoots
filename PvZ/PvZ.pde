@@ -192,12 +192,35 @@ void setup() {
     Zombie test5 = new Zombie(800, 575);
     zombies5_offfield.add(test5);
   }
+  plants[0][0] = new Peashooter(25,95);
+  plants[1][0] = new Peashooter(25,215);
+  plants[2][0] = new Peashooter(25,335);
+  plants[3][0] = new Peashooter(25,455);
+  plants[4][0] = new Peashooter(25,575);
 }
 
 void resetLevel() {
   while( !zombies1_nextfield.isEmpty() ) {
-    zombies1_offfield.add(zombies1_nextfield.remove(0) );
+    zombies1_nextfield.remove(0);
+    zombies1_offfield.add( new Zombie(800, 95, 100 + (levelNum * 15)));
   }
+  while( !zombies2_nextfield.isEmpty() ) {
+    zombies2_nextfield.remove(0);
+    zombies2_offfield.add( new Zombie(800, 215, 100 + (levelNum * 15)));
+  }
+  while( !zombies3_nextfield.isEmpty() ) {
+    zombies3_nextfield.remove(0);
+    zombies3_offfield.add( new Zombie(800, 335, 100 + (levelNum * 15)));
+  }
+  while( !zombies4_nextfield.isEmpty() ) {
+    zombies4_nextfield.remove(0);
+    zombies4_offfield.add( new Zombie(800, 455, 100 + (levelNum * 15)));
+  }
+  while( !zombies5_nextfield.isEmpty() ) {
+    zombies5_nextfield.remove(0);
+    zombies5_offfield.add( new Zombie(800, 575, 100 + (levelNum * 15)));
+  }
+  
   
   
   
@@ -247,11 +270,16 @@ void draw() {
     }
   }
    if(levelDone || !levelClick) {
+     projectile1 = new ArrayList<Projectile>();
+     projectile2 = new ArrayList<Projectile>();
+     projectile3 = new ArrayList<Projectile>();
+     projectile4 = new ArrayList<Projectile>();
+     projectile5 = new ArrayList<Projectile>();
      background(0);
      textSize(72);
      fill(255);
      text("level "+levelNum + " done", 175, 250);
-     
+     noLoop();
      levelDone = false;
      resetLevel();
   }
@@ -355,6 +383,7 @@ void mouseClicked() {
   } else if (levelClick == false){
     if (mouseX > 0 && mouseY > 0){
       levelClick = true;
+      loop();
     }
   } else {  //checks if dropped Sunlight hit 
     for (int i = 0; i < sunspots.size(); i++) {

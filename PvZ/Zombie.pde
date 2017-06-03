@@ -28,6 +28,13 @@ class Zombie { //implements Comparable {
     y = yCor; 
     state = 1;
   }
+  Zombie(int xCor, int yCor, int newhealth) {
+    this();
+    x = xCor;
+    y = yCor; 
+    health = newhealth;
+    state = 1;
+  }
 
   //accessors
   float getX() {
