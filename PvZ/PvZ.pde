@@ -40,6 +40,7 @@ boolean start = false;                                                          
 boolean info = false;
 boolean levelDone = false;
 int levelNum = 0;
+boolean levelClick = true;
 //Do not disturb (for now)
 //ALHeap projectile1 = new ALHeap();
 //ALHeap projectile2 = new ALHeap();
@@ -204,7 +205,7 @@ void resetLevel() {
 
 void draw() {
   ArrayList<Projectile> arr = null;
-  frameRate(120); //sets basic parameters
+  frameRate(40); //sets basic parameters
   if (!start) {//start screen
     background(0, 0, 0);
     display();
@@ -245,7 +246,7 @@ void draw() {
       }
     }
   }
-   if(levelDone) {
+   if(levelDone || !levelClick) {
      background(0);
      textSize(72);
      fill(255);
@@ -267,6 +268,7 @@ void draw() {
     zombies4_offfield.isEmpty() && zombies4_onfield.isEmpty() && 
     zombies5_offfield.isEmpty() && zombies5_onfield.isEmpty()){ 
      levelDone = true;
+     levelClick = false;
      levelNum++;
     }
   }
@@ -349,6 +351,10 @@ void mouseClicked() {
     }
     if (mouseX >= 300 && mouseX <= 500 && mouseY >= 450 && mouseY <= 550) {
       info = true;
+    }
+  } else if (levelClick == false){
+    if (mouseX > 0 && mouseY > 0){
+      levelClick = true;
     }
   } else {  //checks if dropped Sunlight hit 
     for (int i = 0; i < sunspots.size(); i++) {
