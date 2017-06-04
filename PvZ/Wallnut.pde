@@ -8,7 +8,7 @@ class Wallnut extends Plant {
 
   //default constructor
   Wallnut() {
-    health = 100;
+    health = 200;
     x = 25;
     y = 100;
     state = 1;

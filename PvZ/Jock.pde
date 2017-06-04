@@ -1,4 +1,4 @@
-class Zombie { //implements Comparable {
+class Jock extends Zombie { //implements Comparable {
 
   float x; // x-position of zombie in row
   float y; // y-position of zombie, should not be changed post-generation
@@ -6,29 +6,29 @@ class Zombie { //implements Comparable {
   color c;
   int state; // if state = 0, zombie dies
   int damage;
-  float speed = 0.85;
+  float speed = 0.65;
 
   //default constructor
-  Zombie() {
+  Jock() {
     float r = random(256);
     float g = random(256);
     float b = random(256);
     c = color(r, g, b);
     x = 800;
     y = 95;
-    health = 100;
+    health = 150;
     //y = ((int) random(5)) * 120 + 100;
     state = 1;
-    damage = 1;
+    damage = 2;
   }
 
   //overloaded constructor
-  Zombie(int xCor, int yCor) {
+  Jock(int xCor, int yCor) {
     this();
     x = xCor;
     y = yCor;
   }
-  Zombie(int xCor, int yCor, int newhealth) {
+  Jock(int xCor, int yCor, int newhealth) {
     this();
     x = xCor;
     y = yCor; 
@@ -84,7 +84,7 @@ class Zombie { //implements Comparable {
     if (x == -25) {
       fill(255, 0, 0);
     } else {
-      fill(150);
+      fill(110);
     }
     noStroke();
     rect(x, y, 50, 50);

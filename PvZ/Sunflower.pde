@@ -11,7 +11,7 @@ class Sunflower extends Plant {
 
   //default constructor
   Sunflower() {
-    health = 100;
+    health = 50;
     x = 25;
     y = 100;
     state = 1;

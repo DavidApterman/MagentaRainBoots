@@ -186,6 +186,8 @@ void setup() {
   background(25, 150, 25); //sets board color 
   for (int i = 0; i < random(4); i++) {//adds zombies to row 1
     Zombie test = new Zombie(800, 95);
+    //Jock j1 = new Jock(800,95);
+    //zombies1_offfield.add(j1);
     zombies1_offfield.add(test);
   }
   for (int i = 0; i < random(4); i++) {//adds zombies to row 2
@@ -275,6 +277,46 @@ void draw() {
     for (int i = 0; i < plants.length; i++) {
       for (int j = 0; j < plants[i].length; j++) {
         if (plants[i][j] != null && plants[i][j].getState() == 0) { //removes dead plant from the field 
+          if(i == 0) {
+            for(int n = 0; n < projectile1.size(); n++) {
+              if(projectile1.get(n).getSignature() == plants[i][j].getX() ) {
+                projectile1.remove(n);
+                n--;
+              }
+            }
+          }
+          if(i == 1) {
+            for(int n = 0; n < projectile2.size(); n++) {
+              if(projectile2.get(n).getSignature() == plants[i][j].getX() ) {
+                projectile2.remove(n);
+                n--;
+              }
+            }
+          }
+          if(i == 2) {
+            for(int n = 0; n < projectile3.size(); n++) {
+              if(projectile3.get(n).getSignature() == plants[i][j].getX() ) {
+                projectile3.remove(n);
+                n--;
+              }
+            }
+          }
+          if(i == 3) {
+            for(int n = 0; n < projectile4.size(); n++) {
+              if(projectile4.get(n).getSignature() == plants[i][j].getX() ) {
+                projectile4.remove(n);
+                n--;
+              }
+            }
+          }
+          if(i == 4) {
+            for(int n = 0; n < projectile5.size(); n++) {
+              if(projectile5.get(n).getSignature() == plants[i][j].getX() ) {
+                projectile5.remove(n);
+                n--;
+              }
+            }
+          }             
           plants[i][j] = null;
         }
         if (plants[i][j] != null) {//move projectiles

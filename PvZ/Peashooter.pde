@@ -66,7 +66,7 @@ class Peashooter extends Plant {
 
   void shoot() {
     if (shotCounter % 30 == 0) { //interval shots
-      Projectile proj = new Projectile(x, y, damage);
+      Projectile proj = new Projectile(x, y, damage, x);
       projectiles.add(proj);
     }
     shotCounter++;

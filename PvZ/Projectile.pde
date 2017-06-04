@@ -4,6 +4,7 @@ class Projectile implements Comparable {
   float y; // y-position of ball, should not be changed post-generation
   int damage; //determines the bang of your buck
   color c;
+  int signature;
   //int speed; //determines how fast projectile moves down the row
 
   //default constructor
@@ -14,11 +15,12 @@ class Projectile implements Comparable {
     c = color(r, g, b);
   }
   //overloaded constructor
-  Projectile( int xCor, int yCor, int dmg) {
+  Projectile( int xCor, int yCor, int dmg, int sig) {
     this();
     x = xCor;
     y = yCor;
     damage = dmg;
+    signature = sig;
     //  ellipse(xCor, yCor, 10, 10);
   }
 
@@ -36,6 +38,10 @@ class Projectile implements Comparable {
   int getDamage() {
     return damage;
   }
+  int getSignature() {
+    return signature;
+  }
+    
 
   //mutators
   void setX(float newX) {
