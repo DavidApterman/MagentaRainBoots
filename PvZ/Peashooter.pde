@@ -14,7 +14,6 @@ class Peashooter extends Plant {
     health = 100;
     x = 25;
     y = 100;
-    //range = x + 400;
     state = 1;
     damage = 15;
     shotCounter = 0;

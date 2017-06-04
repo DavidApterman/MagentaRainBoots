@@ -89,7 +89,7 @@ void drawRow(ArrayList<Projectile> heap, ArrayList<Zombie> off, ArrayList<Zombie
 
         if (on.get(x).getState() == 0) {   //if a zombie is dead, off it goes off the screen and to zombie heaven
           next.add(on.remove(x)); //add to nextfield
-         //remove zombies after death
+          //remove zombies after death
           if (on.isEmpty()) { //for changes in # of zombies1_onfield during runtime
             return;
           }
@@ -192,38 +192,35 @@ void setup() {
     Zombie test5 = new Zombie(800, 575);
     zombies5_offfield.add(test5);
   }
-  plants[0][0] = new Peashooter(25,95);
-  plants[1][0] = new Peashooter(25,215);
-  plants[2][0] = new Peashooter(25,335);
-  plants[3][0] = new Peashooter(25,455);
-  plants[4][0] = new Peashooter(25,575);
+  //testing purposes
+  /*plants[0][0] = new Peashooter(25,95);
+   plants[1][0] = new Peashooter(25,215);
+   plants[2][0] = new Peashooter(25,335);
+   plants[3][0] = new Peashooter(25,455);
+   plants[4][0] = new Peashooter(25,575);*/
 }
 
 void resetLevel() {
-  while( !zombies1_nextfield.isEmpty() ) {
+  while ( !zombies1_nextfield.isEmpty() ) {
     zombies1_nextfield.remove(0);
     zombies1_offfield.add( new Zombie(800, 95, 100 + (levelNum * 15)));
   }
-  while( !zombies2_nextfield.isEmpty() ) {
+  while ( !zombies2_nextfield.isEmpty() ) {
     zombies2_nextfield.remove(0);
     zombies2_offfield.add( new Zombie(800, 215, 100 + (levelNum * 15)));
   }
-  while( !zombies3_nextfield.isEmpty() ) {
+  while ( !zombies3_nextfield.isEmpty() ) {
     zombies3_nextfield.remove(0);
     zombies3_offfield.add( new Zombie(800, 335, 100 + (levelNum * 15)));
   }
-  while( !zombies4_nextfield.isEmpty() ) {
+  while ( !zombies4_nextfield.isEmpty() ) {
     zombies4_nextfield.remove(0);
     zombies4_offfield.add( new Zombie(800, 455, 100 + (levelNum * 15)));
   }
-  while( !zombies5_nextfield.isEmpty() ) {
+  while ( !zombies5_nextfield.isEmpty() ) {
     zombies5_nextfield.remove(0);
     zombies5_offfield.add( new Zombie(800, 575, 100 + (levelNum * 15)));
   }
-  
-  
-  
-  
 }
 
 void draw() {
@@ -269,38 +266,37 @@ void draw() {
       }
     }
   }
-   if(levelDone || !levelClick) {
-     projectile1 = new ArrayList<Projectile>();
-     projectile2 = new ArrayList<Projectile>();
-     projectile3 = new ArrayList<Projectile>();
-     projectile4 = new ArrayList<Projectile>();
-     projectile5 = new ArrayList<Projectile>();
-     background(0);
-     textSize(72);
-     fill(255);
-     text("level "+levelNum + " done", 175, 250);
-     noLoop();
-     levelDone = false;
-     resetLevel();
+  if (levelDone || !levelClick) {
+    projectile1 = new ArrayList<Projectile>();
+    projectile2 = new ArrayList<Projectile>();
+    projectile3 = new ArrayList<Projectile>();
+    projectile4 = new ArrayList<Projectile>();
+    projectile5 = new ArrayList<Projectile>();
+    background(0);
+    textSize(72);
+    fill(255);
+    text("level "+levelNum + " done", 175, 250);
+    noLoop();
+    levelDone = false;
+    resetLevel();
   }
-  
+
   if (start && !levelDone) { //runs game for each row
     drawRow(projectile1, zombies1_offfield, zombies1_onfield, zombies1_nextfield, 0); 
     drawRow(projectile2, zombies2_offfield, zombies2_onfield, zombies2_nextfield, 1); 
     drawRow(projectile3, zombies3_offfield, zombies3_onfield, zombies3_nextfield, 2); 
     drawRow(projectile4, zombies4_offfield, zombies4_onfield, zombies4_nextfield, 3); 
     drawRow(projectile5, zombies5_offfield, zombies5_onfield, zombies5_nextfield, 4);
-    if(zombies1_offfield.isEmpty() && zombies1_onfield.isEmpty() && 
-    zombies2_offfield.isEmpty() && zombies2_onfield.isEmpty() && 
-    zombies3_offfield.isEmpty() && zombies3_onfield.isEmpty() && 
-    zombies4_offfield.isEmpty() && zombies4_onfield.isEmpty() && 
-    zombies5_offfield.isEmpty() && zombies5_onfield.isEmpty()){ 
-     levelDone = true;
-     levelClick = false;
-     levelNum++;
+    if (zombies1_offfield.isEmpty() && zombies1_onfield.isEmpty() && 
+      zombies2_offfield.isEmpty() && zombies2_onfield.isEmpty() && 
+      zombies3_offfield.isEmpty() && zombies3_onfield.isEmpty() && 
+      zombies4_offfield.isEmpty() && zombies4_onfield.isEmpty() && 
+      zombies5_offfield.isEmpty() && zombies5_onfield.isEmpty()) { 
+      levelDone = true;
+      levelClick = false;
+      levelNum++;
     }
   }
-
 }
 
 
@@ -360,11 +356,28 @@ void display() {
     textSize(18);
     text("sunlight", 15, 25);
     text(sunlight, 30, 50);
+    text("cost:", 120, 50);
     text("||", 93, 25);
-    text("peashooter", 100, 25);
-    text("||", 193, 25);
-    text("sunflower", 208, 25);
+    text("||", 93, 50);
+    text("peashooter", 190, 25);
+    text("50", 225, 50);
     text("||", 293, 25);
+    text("sunflower", 308, 25);
+    text("50", 338, 50);
+    text("||", 393, 25);
+    text("wallnut", 418, 25);
+    text("100", 430, 50);
+    text("||", 493, 25);
+    text("reset", 727, 50);
+    if (plantclicked == 0){
+      text("none", 728, 25);
+    } else if (plantclicked == 1){
+      text("peashooter", 700, 25);
+    } else if (plantclicked == 2){
+      text("sunflower", 708, 25);
+    } else if (plantclicked == 3){
+      text("wallnut", 718, 25);
+    } 
   }
 }
 void mouseClicked() {
@@ -380,8 +393,8 @@ void mouseClicked() {
     if (mouseX >= 300 && mouseX <= 500 && mouseY >= 450 && mouseY <= 550) {
       info = true;
     }
-  } else if (levelClick == false){
-    if (mouseX > 0 && mouseY > 0){
+  } else if (levelClick == false) {
+    if (mouseX > 0 && mouseY > 0) {
       levelClick = true;
       loop();
     }
@@ -404,24 +417,35 @@ void mouseClicked() {
         }
       }
     }
-
-    if (plantclicked != 0) {  //checks if plant placement option selected , places appropriate plant 
+    if (plantclicked != 0 && mouseY > 60 && get(mouseX, mouseY) == color(25, 150, 25)) {  //checks if plant placement option selected , places appropriate plant 
       int r = (mouseY - 60) / 120;
       int c = mouseX / 100;
-      if (plantclicked == 1) {
-        plants[r][c] = new Peashooter(c*100+25, r*120+95);
-      } else if (plantclicked == 2) {
-        plants[r][c] = new Sunflower(c*100+25, r*120+95);
+      if (plants[r][c] == null) {
+        if (plantclicked == 1) {
+          plants[r][c] = new Peashooter(c*100+25, r*120+95);
+          sunlight -= 50;
+        } else if (plantclicked == 2) {
+          plants[r][c] = new Sunflower(c*100+25, r*120+95);
+          sunlight -= 50;
+        } else if (plantclicked == 3) {
+          plants[r][c] = new Wallnut(c*100+25, r*120+95);
+          sunlight -= 100;
+        }
+        plantclicked = 0;
       }
-      plantclicked = 0;
-      sunlight -= 50;
     }
-    if (sunlight >= 50 && mouseX >= 93 && mouseX <= 193 && mouseY >= 10 && mouseY <= 35 ) { //detects click on peashooter button
-      System.out.println("plant hit");
+    if (mouseX >= 727 && mouseX <= 780 && mouseY >= 35 && mouseY <= 60 ){
+      System.out.println("reset");
+      plantclicked = 0;
+    } else if (sunlight >= 50 && mouseX >= 190 && mouseX <= 290 && mouseY >= 10 && mouseY <= 35 ) { //detects click on peashooter button
+      System.out.println("peashooter hit");
       plantclicked = 1;
-    } else if ( sunlight >= 50 && mouseX >= 193 && mouseX <= 293 && mouseY >= 10 && mouseY <= 35 ) { //detects click on sunflower button
+    } else if ( sunlight >= 50 && mouseX >= 300 && mouseX <= 400 && mouseY >= 10 && mouseY <= 35 ) { //detects click on sunflower button
       System.out.println("sunflower hit");
       plantclicked = 2;
+    } else if ( sunlight >= 50 && mouseX >= 400 && mouseX <= 500 && mouseY >= 10 && mouseY <= 35 ) { //detects click on wallnut button
+      System.out.println("wallnut hit");
+      plantclicked = 3;
     }
   }
 }  

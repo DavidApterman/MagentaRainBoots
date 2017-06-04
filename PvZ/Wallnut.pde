@@ -1,4 +1,4 @@
-class Plant {
+class Wallnut extends Plant {
 
   int x; //x-pos of plant, doesn't change
   int y; //y-pos of plant, doesn't change
@@ -7,14 +7,16 @@ class Plant {
   int state; //checker for if plant has died 
 
   //default constructor
-  Plant() {
+  Wallnut() {
     health = 100;
     x = 25;
     y = 100;
     state = 1;
+    health = 250;
+    type = 3;
   }
 
-  Plant (int xcor, int ycor) {
+  Wallnut (int xcor, int ycor) {
     this();
     x = xcor;
     y = ycor;
@@ -51,7 +53,7 @@ class Plant {
   }
 
   void display() {
-    fill(0, 255, 0);
+    fill(255);
     rect(x, y, 50, 50);
   }
 
