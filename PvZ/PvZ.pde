@@ -34,11 +34,11 @@ ArrayList<Projectile> projectile3 = new ArrayList<Projectile>();
 ArrayList<Projectile> projectile4 = new ArrayList<Projectile>();
 ArrayList<Projectile> projectile5 = new ArrayList<Projectile>();
 int time = 0;                                                                                           //global timer for game
-int r1time = (int)random(-500,-200);
-int r2time = (int)random(-500,-200);
-int r3time = (int)random(-500,-200);
-int r4time = (int)random(-500,-200);
-int r5time = (int)random(-500,-200);
+int r1time = (int)random(-500, -200);
+int r2time = (int)random(-500, -200);
+int r3time = (int)random(-500, -200);
+int r4time = (int)random(-500, -200);
+int r5time = (int)random(-500, -200);
 int sunlight = 250;                                                                                     //starting sunlight (currently high for testing)
 int plantclicked = 0;                                                                                   //stores type of plant after user selection to place correct breed
 boolean start = false;                                                                                  //start screen display boolean
@@ -58,7 +58,7 @@ boolean levelClick = true;
 
 
 //mini "draw" method for each row, uses row-specific variables to ensure equivalent/compact running for each row
-void drawRow(ArrayList<Projectile> heap, ArrayList<Zombie> off, ArrayList<Zombie> on, ArrayList<Zombie> next,int timer, int rowNum) {
+void drawRow(ArrayList<Projectile> heap, ArrayList<Zombie> off, ArrayList<Zombie> on, ArrayList<Zombie> next, int timer, int rowNum) {
   Plant p = null;
 
   if (timer % 900 == 0 || timer % 900 == 300 || timer % 900 == 600) { //maintain rate of zombies
@@ -216,37 +216,37 @@ void resetLevel() {
   while ( !zombies1_nextfield.isEmpty() ) {
     zombies1_nextfield.remove(0);
     zombies1_offfield.add( new Zombie(800, 95, 100 + (levelNum * 15)));
-    for (int x = 1; x <= random(2); x++){
-      zombies1_offfield.add( new Zombie(800, 95, 100 + (levelNum * 15)));
-    }
   }
   while ( !zombies2_nextfield.isEmpty() ) {
     zombies2_nextfield.remove(0);
     zombies2_offfield.add( new Zombie(800, 215, 100 + (levelNum * 15)));
-    for (int x = 1; x <= random(2); x++){
-      zombies2_offfield.add( new Zombie(800, 95, 100 + (levelNum * 15)));
-    }
   }
   while ( !zombies3_nextfield.isEmpty() ) {
     zombies3_nextfield.remove(0);
     zombies3_offfield.add( new Zombie(800, 335, 100 + (levelNum * 15)));
-    for (int x = 1; x <= random(2); x++){
-      zombies3_offfield.add( new Zombie(800, 95, 100 + (levelNum * 15)));
-    }
   }
   while ( !zombies4_nextfield.isEmpty() ) {
     zombies4_nextfield.remove(0);
     zombies4_offfield.add( new Zombie(800, 455, 100 + (levelNum * 15)));
-    for (int x = 1; x <= random(2); x++){
-      zombies4_offfield.add( new Zombie(800, 95, 100 + (levelNum * 15)));
-    }
   }
   while ( !zombies5_nextfield.isEmpty() ) {
     zombies5_nextfield.remove(0);
     zombies5_offfield.add( new Zombie(800, 575, 100 + (levelNum * 15)));
-    for (int x = 1; x <= random(2); x++){
-      zombies5_offfield.add( new Zombie(800, 95, 100 + (levelNum * 15)));
-    }
+  }
+  for (int x = 1; x <= random(2); x++) {
+    zombies1_offfield.add( new Zombie(800, 95, 100 + (levelNum * 15)));
+  }
+  for (int x = 1; x <= random(2); x++) {
+    zombies2_offfield.add( new Zombie(800, 215, 100 + (levelNum * 15)));
+  }
+  for (int x = 1; x <= random(2); x++) {
+    zombies3_offfield.add( new Zombie(800, 335, 100 + (levelNum * 15)));
+  }
+  for (int x = 1; x <= random(2); x++) {
+    zombies4_offfield.add( new Zombie(800, 455, 100 + (levelNum * 15)));
+  }
+  for (int x = 1; x <= random(2); x++) {
+    zombies5_offfield.add( new Zombie(800,575, 100 + (levelNum * 15)));
   }
 }
 
@@ -260,11 +260,11 @@ void draw() {
     background(25, 150, 25); 
     display();
     time ++;
-    r1time += (int)random(0,4);
-    r2time += (int)random(0,4);
-    r3time += (int)random(0,4);
-    r4time += (int)random(0,4);
-    r5time += (int)random(0,4);
+    r1time += (int)random(0, 4);
+    r2time += (int)random(0, 4);
+    r3time += (int)random(0, 4);
+    r4time += (int)random(0, 4);
+    r5time += (int)random(0, 4);
     if (time%300 == 0 && sunspots.size() < 5) {
       sunspots.add(new Sunlight(random(800), 0));
     }
