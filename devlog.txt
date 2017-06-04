@@ -130,5 +130,7 @@ Jesse, David, Henry   :: //
 
 @2017-06-03
 --------------------------------------------------------------
-Jesse, David, Henry   :: //
+Jesse, Henry   :: fixed bugs: new level screen disappearing instantly, projectiles continue shooting on top of new level screen, planting in first row if double clicked plant type, zombies after first level dying instantly, planting when picking up sunlight, remove function not stopping after removing a single plant, planting more than one plant in the same plot
+added: plant types wallnut and chomper, reset plant type functionality, remove plant functionality, cost of different plants, increased zombie health in subsequent levels
+Jesse, Henry   :: fixed Jesse's commit history contributions on home laptop, discussed remaining required and optional functionalities 
 ==============================================================
