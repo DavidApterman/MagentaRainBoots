@@ -23,10 +23,9 @@ class Zombie { //implements Comparable {
 
   //overloaded constructor
   Zombie(int xCor, int yCor) {
-<<<<<<< HEAD
     this();
     x = xCor;
-    y = yCor; 
+    y = yCor;
   }
   Zombie(int xCor, int yCor, int newhealth) {
     this();
@@ -34,20 +33,6 @@ class Zombie { //implements Comparable {
     y = yCor; 
     health = newhealth;
   }
-=======
-    this();
-    x = xCor;
-    y = yCor; 
-    state = 1;
-  }
-  Zombie(int xCor, int yCor, int newhealth) {
-    this();
-    x = xCor;
-    y = yCor; 
-    health = newhealth;
-    state = 1;
-  }
->>>>>>> 905f7b9c2b3a1cc26249863d749a6255e284a675
 
   //accessors
   float getX() {
