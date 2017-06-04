@@ -15,10 +15,9 @@
 git clone git@github.com:DavidApterman/MagentaRainBoots.git
 ```
 3. Go into the folder called PvZ using this command
-...
-
+```
 cd PvZ/
-...
+```
 4. Run the program
 ```
 processing PvZ.pde
