@@ -106,6 +106,7 @@ void drawRow(ArrayList<Projectile> heap, ArrayList<Zombie> off, ArrayList<Zombie
           }
         }
         heap.remove(i);  //removes projectiles from heap if they hit a zombie
+        i--;
       }
     }
   }

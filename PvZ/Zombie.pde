@@ -6,7 +6,7 @@ class Zombie { //implements Comparable {
   color c;
   int state; // if state = 0, zombie dies
   int damage;
-  float speed = 0.75;
+  float speed = 0.5;
 
   //default constructor
   Zombie() {
