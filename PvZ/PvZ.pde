@@ -34,7 +34,12 @@ ArrayList<Projectile> projectile3 = new ArrayList<Projectile>();
 ArrayList<Projectile> projectile4 = new ArrayList<Projectile>();
 ArrayList<Projectile> projectile5 = new ArrayList<Projectile>();
 int time = 0;                                                                                           //global timer for game
-int sunlight = 500;                                                                                     //starting sunlight (currently high for testing)
+int r1time = (int)random(-500,-200);
+int r2time = (int)random(-500,-200);
+int r3time = (int)random(-500,-200);
+int r4time = (int)random(-500,-200);
+int r5time = (int)random(-500,-200);
+int sunlight = 250;                                                                                     //starting sunlight (currently high for testing)
 int plantclicked = 0;                                                                                   //stores type of plant after user selection to place correct breed
 boolean start = false;                                                                                  //start screen display boolean
 boolean info = false;
@@ -53,12 +58,13 @@ boolean levelClick = true;
 
 
 //mini "draw" method for each row, uses row-specific variables to ensure equivalent/compact running for each row
-void drawRow(ArrayList<Projectile> heap, ArrayList<Zombie> off, ArrayList<Zombie> on, ArrayList<Zombie> next, int rowNum) {
+void drawRow(ArrayList<Projectile> heap, ArrayList<Zombie> off, ArrayList<Zombie> on, ArrayList<Zombie> next,int timer, int rowNum) {
   Plant p = null;
 
-  if (time % 300 == 0) { //maintain rate of zombies
+  if (timer % 900 == 0 || timer % 900 == 300 || timer % 900 == 600) { //maintain rate of zombies
     if (!off.isEmpty()) {
       on.add(off.remove(0)); //if there are more zombies to spawn, by all means
+      System.out.println("zombie spawn");
     }
   }
 
@@ -177,23 +183,23 @@ ArrayList<Zombie>  sort( ArrayList<Zombie>  arr ) {
 void setup() {
   size(800, 660); //generates board
   background(25, 150, 25); //sets board color 
-  for (int i = 0; i < 4; i++) {//adds zombies to row 1
+  for (int i = 0; i < random(4); i++) {//adds zombies to row 1
     Zombie test = new Zombie(800, 95);
     zombies1_offfield.add(test);
   }
-  for (int i = 0; i < 4; i++) {//adds zombies to row 2
+  for (int i = 0; i < random(4); i++) {//adds zombies to row 2
     Zombie test2 = new Zombie(800, 215);
     zombies2_offfield.add(test2);
   }
-  for (int i = 0; i < 4; i++) {//adds zombies to row 3
+  for (int i = 0; i < random(4); i++) {//adds zombies to row 3
     Zombie test3 = new Zombie(800, 335);
     zombies3_offfield.add(test3);
   }
-  for (int i = 0; i < 4; i++) {//adds zombies to row 4
+  for (int i = 0; i < random(4); i++) {//adds zombies to row 4
     Zombie test4 = new Zombie(800, 455);
     zombies4_offfield.add(test4);
   }
-  for (int i = 0; i < 4; i++) {//adds zombies to row 5
+  for (int i = 0; i < random(4); i++) {//adds zombies to row 5
     Zombie test5 = new Zombie(800, 575);
     zombies5_offfield.add(test5);
   }
@@ -209,22 +215,37 @@ void resetLevel() {
   while ( !zombies1_nextfield.isEmpty() ) {
     zombies1_nextfield.remove(0);
     zombies1_offfield.add( new Zombie(800, 95, 100 + (levelNum * 15)));
+    for (int x = 1; x <= random(2); x++){
+      zombies1_offfield.add( new Zombie(800, 95, 100 + (levelNum * 15)));
+    }
   }
   while ( !zombies2_nextfield.isEmpty() ) {
     zombies2_nextfield.remove(0);
     zombies2_offfield.add( new Zombie(800, 215, 100 + (levelNum * 15)));
+    for (int x = 1; x <= random(2); x++){
+      zombies2_offfield.add( new Zombie(800, 95, 100 + (levelNum * 15)));
+    }
   }
   while ( !zombies3_nextfield.isEmpty() ) {
     zombies3_nextfield.remove(0);
     zombies3_offfield.add( new Zombie(800, 335, 100 + (levelNum * 15)));
+    for (int x = 1; x <= random(2); x++){
+      zombies3_offfield.add( new Zombie(800, 95, 100 + (levelNum * 15)));
+    }
   }
   while ( !zombies4_nextfield.isEmpty() ) {
     zombies4_nextfield.remove(0);
     zombies4_offfield.add( new Zombie(800, 455, 100 + (levelNum * 15)));
+    for (int x = 1; x <= random(2); x++){
+      zombies4_offfield.add( new Zombie(800, 95, 100 + (levelNum * 15)));
+    }
   }
   while ( !zombies5_nextfield.isEmpty() ) {
     zombies5_nextfield.remove(0);
     zombies5_offfield.add( new Zombie(800, 575, 100 + (levelNum * 15)));
+    for (int x = 1; x <= random(2); x++){
+      zombies5_offfield.add( new Zombie(800, 95, 100 + (levelNum * 15)));
+    }
   }
 }
 
@@ -238,6 +259,11 @@ void draw() {
     background(25, 150, 25); 
     display();
     time ++;
+    r1time += (int)random(0,4);
+    r2time += (int)random(0,4);
+    r3time += (int)random(0,4);
+    r4time += (int)random(0,4);
+    r5time += (int)random(0,4);
     if (time%300 == 0 && sunspots.size() < 5) {
       sunspots.add(new Sunlight(random(800), 0));
     }
@@ -287,11 +313,11 @@ void draw() {
   }
 
   if (start && !levelDone) { //runs game for each row
-    drawRow(projectile1, zombies1_offfield, zombies1_onfield, zombies1_nextfield, 0); 
-    drawRow(projectile2, zombies2_offfield, zombies2_onfield, zombies2_nextfield, 1); 
-    drawRow(projectile3, zombies3_offfield, zombies3_onfield, zombies3_nextfield, 2); 
-    drawRow(projectile4, zombies4_offfield, zombies4_onfield, zombies4_nextfield, 3); 
-    drawRow(projectile5, zombies5_offfield, zombies5_onfield, zombies5_nextfield, 4);
+    drawRow(projectile1, zombies1_offfield, zombies1_onfield, zombies1_nextfield, r1time, 0); 
+    drawRow(projectile2, zombies2_offfield, zombies2_onfield, zombies2_nextfield, r2time, 1); 
+    drawRow(projectile3, zombies3_offfield, zombies3_onfield, zombies3_nextfield, r3time, 2); 
+    drawRow(projectile4, zombies4_offfield, zombies4_onfield, zombies4_nextfield, r4time, 3); 
+    drawRow(projectile5, zombies5_offfield, zombies5_onfield, zombies5_nextfield, r5time, 4);
     if (zombies1_offfield.isEmpty() && zombies1_onfield.isEmpty() && 
       zombies2_offfield.isEmpty() && zombies2_onfield.isEmpty() && 
       zombies3_offfield.isEmpty() && zombies3_onfield.isEmpty() && 
