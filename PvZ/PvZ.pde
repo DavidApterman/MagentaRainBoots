@@ -80,7 +80,12 @@ void drawRow(ArrayList<Projectile> heap, ArrayList<Zombie> off, ArrayList<Zombie
       textSize(32);
       text("game over", 350, 300);
       noLoop();
-    } else if (p != null && p.getX() + 25 >= on.get(x).getX() - 25 && p.getX() <= on.get(x).getX()) {    //detects plant-zombie collision
+    } 
+    else if(on.get(x).getState() == 2 && p != null && p.getX() + 25 >= on.get(x).getX() - 25 && p.getX() <= on.get(x).getX()) {
+      on.get(x).setState(1);
+      on.get(x).setX(p.getX() - 20);
+    }
+    else if (p != null && p.getX() + 25 >= on.get(x).getX() - 25 && p.getX()-20 <= on.get(x).getX()) {    //detects plant-zombie collision
       if (p.getType() == 4) {
         p.setState(0);
         next.add(on.remove(x));
@@ -185,10 +190,10 @@ void setup() {
   size(800, 660); //generates board
   background(25, 150, 25); //sets board color 
   for (int i = 0; i < random(4); i++) {//adds zombies to row 1
-    Zombie test = new Zombie(800, 95);
-    //Jock j1 = new Jock(800,95);
-    //zombies1_offfield.add(j1);
-    zombies1_offfield.add(test);
+    //Zombie test = new Zombie(800, 95);
+    Jumper j1 = new Jumper(800,95);
+    zombies1_offfield.add(j1);
+    //zombies1_offfield.add(test);
   }
   for (int i = 0; i < random(4); i++) {//adds zombies to row 2
     Zombie test2 = new Zombie(800, 215);
