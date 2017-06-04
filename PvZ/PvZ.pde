@@ -75,8 +75,18 @@ void drawRow(ArrayList<Projectile> heap, ArrayList<Zombie> off, ArrayList<Zombie
       text("game over", 350, 300);
       noLoop();
     } else if (p != null && p.getX() + 25 >= on.get(x).getX() - 25 && p.getX() <= on.get(x).getX()) {    //detects plant-zombie collision
+<<<<<<< HEAD
+      if (p.getType() == 4) {
+        p.setState(0);
+        next.add(on.remove(x));
+      } else {
+        p.setHealth(on.get(x).getDamage() );
+        on.get(x).display();
+      }
+=======
       p.setHealth(on.get(x).getDamage() );
       on.get(x).display();
+>>>>>>> 905f7b9c2b3a1cc26249863d749a6255e284a675
     } else {                                                                                            //moves zombies forward
       on.get(x).move();
     }
@@ -368,6 +378,29 @@ void display() {
     text("wallnut", 418, 25);
     text("100", 430, 50);
     text("||", 493, 25);
+<<<<<<< HEAD
+    text("chomper", 512, 25);
+    text("100", 530, 50);
+    text("||", 593, 25);
+    text("||", 593, 50);
+    text("remove", 613, 38);
+    text("||", 685, 25);
+    text("||", 685, 50);
+    text("reset", 727, 50);
+    if (plantclicked == 0) {
+      text("none", 728, 25);
+    } else if (plantclicked == -1) {
+      text("remove", 717, 25);
+    } else if (plantclicked == 1) {
+      text("peashooter", 700, 25);
+    } else if (plantclicked == 2) {
+      text("sunflower", 708, 25);
+    } else if (plantclicked == 3) {
+      text("wallnut", 718, 25);
+    } else if (plantclicked == 4) {
+      text("chomper", 710, 25);
+    }
+=======
     text("reset", 727, 50);
     if (plantclicked == 0){
       text("none", 728, 25);
@@ -378,6 +411,7 @@ void display() {
     } else if (plantclicked == 3){
       text("wallnut", 718, 25);
     } 
+>>>>>>> 905f7b9c2b3a1cc26249863d749a6255e284a675
   }
 }
 void mouseClicked() {
@@ -417,9 +451,18 @@ void mouseClicked() {
         }
       }
     }
+<<<<<<< HEAD
+    int r = (mouseY - 60) / 120;
+    int c = mouseX / 100;
+    if (plantclicked == -1 && plants[r][c] != null) {
+      plants[r][c].setState(0);
+    } 
+    if (plantclicked != 0 && mouseY > 60 && get(mouseX, mouseY) == color(25, 150, 25)) {  //checks if plant placement option selected , places appropriate plant 
+=======
     if (plantclicked != 0 && mouseY > 60 && get(mouseX, mouseY) == color(25, 150, 25)) {  //checks if plant placement option selected , places appropriate plant 
       int r = (mouseY - 60) / 120;
       int c = mouseX / 100;
+>>>>>>> 905f7b9c2b3a1cc26249863d749a6255e284a675
       if (plants[r][c] == null) {
         if (plantclicked == 1) {
           plants[r][c] = new Peashooter(c*100+25, r*120+95);
@@ -430,13 +473,28 @@ void mouseClicked() {
         } else if (plantclicked == 3) {
           plants[r][c] = new Wallnut(c*100+25, r*120+95);
           sunlight -= 100;
+<<<<<<< HEAD
+        } else if (plantclicked == 4) {
+          plants[r][c] = new Chomper(c*100+25, r*120+95);
+          sunlight -= 100;
+=======
+>>>>>>> 905f7b9c2b3a1cc26249863d749a6255e284a675
         }
         plantclicked = 0;
       }
     }
+<<<<<<< HEAD
+    if (mouseX >= 727 && mouseX <= 780 && mouseY >= 35 && mouseY <= 60 ) {
+      System.out.println("reset");
+      plantclicked = 0;
+    } else if (mouseX >= 600 && mouseX <= 690 && mouseY >= 10 && mouseY <= 60) {
+      System.out.println("remove");
+      plantclicked = -1;
+=======
     if (mouseX >= 727 && mouseX <= 780 && mouseY >= 35 && mouseY <= 60 ){
       System.out.println("reset");
       plantclicked = 0;
+>>>>>>> 905f7b9c2b3a1cc26249863d749a6255e284a675
     } else if (sunlight >= 50 && mouseX >= 190 && mouseX <= 290 && mouseY >= 10 && mouseY <= 35 ) { //detects click on peashooter button
       System.out.println("peashooter hit");
       plantclicked = 1;
@@ -446,6 +504,12 @@ void mouseClicked() {
     } else if ( sunlight >= 50 && mouseX >= 400 && mouseX <= 500 && mouseY >= 10 && mouseY <= 35 ) { //detects click on wallnut button
       System.out.println("wallnut hit");
       plantclicked = 3;
+<<<<<<< HEAD
+    } else if ( sunlight >= 50 && mouseX >= 500 && mouseX <= 600 && mouseY >= 10 && mouseY <= 35 ) { //detects click on wallnut button
+      System.out.println("chomper hit");
+      plantclicked = 4;
+=======
+>>>>>>> 905f7b9c2b3a1cc26249863d749a6255e284a675
     }
   }
 }  
