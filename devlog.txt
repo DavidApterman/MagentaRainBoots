@@ -138,5 +138,6 @@ Jesse, Henry   :: fixed Jesse's commit history contributions on home laptop, dis
 --------------------------------------------------------------
 David   :: fixed bugs: zombies attacking plants placed in front of them, projectiles still displaying after source plant was killed/removed
            added: Jock and Jumper Zombie subclasses
-Jesse, Henry ::          
+Jesse   :: fixed bugs: projectiles ignoring added zombies of subsequent levels
+           added: randomized number of zombies, increase in zombies every level, randomized zombie spawn rate
 ==============================================================
