@@ -77,6 +77,7 @@ void drawRow(ArrayList<Projectile> heap, ArrayList<Zombie> off, ArrayList<Zombie
   for (int x = 0; x < on.size(); x++) { //checks if a zombie has reached the end of the row, which would cause a game over
     if (on.get(x).getX() <= -25) { //if true, zombie reached end
       on.get(x).display();
+      fill(255,0,0);
       textSize(32);
       text("game over", 350, 300);
       noLoop();
