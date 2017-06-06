@@ -43,6 +43,7 @@ int sunlight = 250;                                                             
 int plantclicked = 0;                                                                                   //stores type of plant after user selection to place correct breed
 boolean start = false;                                                                                  //start screen display boolean
 boolean info = false;
+boolean instructions = false;
 boolean levelDone = false;
 int levelNum = 0;
 boolean levelClick = true;
@@ -398,6 +399,29 @@ void display() {
     text("Good luck, and may the odds be ever in your favor.", 100, 600);    
     rect(625, 5, 150, 75, 15);    
     fill(0);    
+    text("Instructions", 650, 50);
+  } else if (instructions){
+    textSize(16);    
+    fill(255);    
+    text("You can place plants by pressing on a type of plant", 50, 150);
+    text("on the top and then clicking somewhere on the field.", 50, 175);
+    text("While you have clicked on a type of plant,", 50, 200);    
+    text("the currently held type is displayed in the top right corner.", 50, 225); 
+    text("There is also a reset button below", 50, 250);
+    text("it to reset the currently held type.", 50, 275);  
+    text("There is also a remove option where you press on the remove text at the top of the", 50, 300);
+    text("screen and click on a plant. It will remove the plant from the field, much like in the game.", 50, 325);
+    text("Currently, we have 4 different types of plants:", 50, 350); 
+    text("peashooters, sunflowers, wallnuts, and chompers.", 50, 375);
+    text("The peashooter is your normal, average plant.", 50, 400);    
+    text("The sunflower is your friend.", 50, 425);
+    text("It produces sunlight so that you can plant more plants!", 50, 450);    
+    text("The wallnut is your best line of defense with a ton of health.", 50, 475);   
+    text("Last but not least, the chomper is your last resort if you want to kill a zombie", 50, 500);
+    text("instantly- but be careful, the chomper also dies with the zombie (suicide bomber???).", 50, 525);
+    text("These plants cost 50, 50, 100, and 100 sunlight, respectively.", 50, 550);    
+    rect(625, 5, 150, 75, 15);    
+    fill(0);    
     text("Start", 680, 50);
   } else if (!start) {
     rect(300, 280, 200, 100, 15);
@@ -474,8 +498,14 @@ void display() {
 void mouseClicked() {
   if (info) {
     if (mouseX >= 625 && mouseX <= 775 && mouseY >= 5 && mouseY <= 80) { 
-      start = true;    
+      instructions = true;
+      //start = true;    
       info = false;
+    }
+  } else if (instructions){
+    if (mouseX >= 625 && mouseX <= 775 && mouseY >= 5 && mouseY <= 80) { 
+      start = true;    
+      instructions = false;
     }
   } else if (!start) {//checks if start button clicked 
     if (mouseX >= 300 && mouseX <= 500 && mouseY >= 280 && mouseY <= 380) {

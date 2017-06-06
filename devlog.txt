@@ -12,6 +12,7 @@ OBSTACLES OVERCOME
   - we created working sunlight class!
   - we created different working levels!
   - we created different types of zombies!
+  - we got an info and instructions screen!
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -21,6 +22,8 @@ COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   - wow! oo!...
   - processing is pretty neat. it can handle a ton of stuff.
+  - how to create start screen.
+  - how to create flow of game (including info and instructions).
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -28,11 +31,13 @@ MID-DEVELOPMENT DESIGN CHANGES
   - we changed zombie queues to ArrayLists bc we realized queues were not needed
   - we changed projectile queues to heaps bc we realized it was a good idea to implement them as heaps based on the very definition of heaps
   - we created a parent class of plant and subclasses of peashooter and sunflower in order to keep plant array working in PvZ
+  - we decided to have an instructions screen in order to teach the user how to play the game and what each visual element means and how they can interact with the visual elements
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   - we don't have to overcomplicate things. simplicity is key
   - drawings + kts <3
+  - easier to split up functions and work for cleaner code
   
   
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  
@@ -143,4 +148,9 @@ David   :: fixed bugs: zombies attacking plants placed in front of them, project
            added: Jock and Jumper Zombie subclasses
 Jesse   :: fixed bugs: projectiles ignoring added zombies of subsequent levels
            added: randomized number of zombies, increase in zombies every level, randomized zombie spawn rate
+==============================================================
+
+@2017-06-05
+--------------------------------------------------------------
+Henry   :: added instructions screen, cleaned up devlog and updated readme.
 ==============================================================
