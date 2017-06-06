@@ -53,7 +53,7 @@ class Sunflower extends Plant {
 
   void generate() {
     sunTime ++;
-    if (sunTime > random(400, 500)) {
+    if (sunTime > random(600, 800) && dropped.size() < 3) {
       dropped.add( new Sunlight( random(-25, 25) + x, random(-35, 35) + y) );   //generates Sunlight in block around Sunflower 
       dropped.get(dropped.size()-1).setState(0);
       sunTime = 0;

@@ -70,24 +70,22 @@ void drawRow(ArrayList<Projectile> heap, ArrayList<Zombie> off, ArrayList<Zombie
     }
   }
   for (int x = 0; x < on.size(); x++) { //checks if a zombie has reached the end of the row, which would cause a game over
-    for(int i = 0; i < plants[rowNum].length; i++) {
-      if(plants[rowNum][i] != null && plants[rowNum][i].getX() - 20 < on.get(x).getX() && on.get(x).getX() - plants[rowNum][i].getX() <= distance ) {
+    for (int i = 0; i < plants[rowNum].length; i++) {
+      if (plants[rowNum][i] != null && plants[rowNum][i].getX() - 20 < on.get(x).getX() && on.get(x).getX() - plants[rowNum][i].getX() <= distance ) {
         p = plants[rowNum][i];
         distance = on.get(x).getX() - plants[rowNum][i].getX();
       }
     }              
     if (on.get(x).getX() <= -25) { //if true, zombie reached end
       on.get(x).display();
-      fill(255,0,0);
+      fill(255, 0, 0);
       textSize(32);
       text("game over", 350, 300);
       noLoop();
-    } 
-    else if(on.get(x).getState() == 2 && p != null && p.getX() + 25 >= on.get(x).getX() - 25 && p.getX() <= on.get(x).getX()) {
+    } else if (on.get(x).getState() == 2 && p != null && p.getX() + 25 >= on.get(x).getX() - 25 && p.getX() <= on.get(x).getX()) {
       on.get(x).setState(1);
       on.get(x).setX(p.getX() - 15);
-    }
-    else if (p != null && p.getX() + 25 >= on.get(x).getX() - 25 && p.getX()-20 <= on.get(x).getX()) {    //detects plant-zombie collision
+    } else if (p != null && p.getX() + 25 >= on.get(x).getX() - 25 && p.getX()-20 <= on.get(x).getX()) {    //detects plant-zombie collision
       if (p.getType() == 4) {
         p.setState(0);
         next.add(on.remove(x));
@@ -95,8 +93,7 @@ void drawRow(ArrayList<Projectile> heap, ArrayList<Zombie> off, ArrayList<Zombie
         p.setHealth(on.get(x).getDamage() );
         on.get(x).display();
       }
-    }
-    else {                                                                                            //moves zombies forward
+    } else {                                                                                            //moves zombies forward
       on.get(x).move();
     }
     for (int i = 0; i < heap.size(); i++) {
@@ -117,8 +114,15 @@ void drawRow(ArrayList<Projectile> heap, ArrayList<Zombie> off, ArrayList<Zombie
       }
     }
   }
-  for (Projectile j : heap ) {
-    j.display();        //display projectiles AFTER calculating collisions
+  for(int i = 0; i < plants[rowNum].length; i++) {
+    if(plants[rowNum][i] != null && plants[rowNum][i].getState() != 0) {
+      float xcor = plants[rowNum][i].getX();
+      for(Projectile j: heap) {
+        if( j.getSignature() == xcor) {
+          j.display();
+        }
+      }
+    }
   }
 }
 
@@ -192,10 +196,20 @@ void setup() {
   size(800, 660); //generates board
   background(25, 150, 25); //sets board color 
   for (int i = 0; i < random(4); i++) {//adds zombies to row 1
-    //Zombie test = new Zombie(800, 95);
-    Jumper j1 = new Jumper(800,95);
-    zombies1_offfield.add(j1);
-    //zombies1_offfield.add(test);
+    float rand = random(0, 1);
+    if (rand <= .15) {
+      Jumper j1 = new Jumper(800, 95);
+      zombies1_offfield.add(j1);
+    } else if (rand <= .3) {
+      Jock jo1 = new Jock(800, 95);
+      zombies1_offfield.add(jo1);
+    } else if (rand <= .9) {
+      Zombie test = new Zombie(800, 95);
+      zombies1_offfield.add(test);
+    } else {
+      Boss b1 = new Boss(800, 70);
+      zombies1_offfield.add(b1);
+    }
   }
   for (int i = 0; i < random(4); i++) {//adds zombies to row 2
     Zombie test2 = new Zombie(800, 215);
@@ -255,13 +269,13 @@ void resetLevel() {
     zombies4_offfield.add( new Zombie(800, 455, 100 + (levelNum * 15)));
   }
   for (int x = 1; x <= random(2); x++) {
-    zombies5_offfield.add( new Zombie(800,575, 100 + (levelNum * 15)));
+    zombies5_offfield.add( new Zombie(800, 575, 100 + (levelNum * 15)));
   }
 }
 
 void draw() {
   ArrayList<Projectile> arr = null;
-  frameRate(40); //sets basic parameters
+  frameRate(100); //sets basic parameters
   if (!start) {//start screen
     background(0, 0, 0);
     display();
@@ -274,7 +288,7 @@ void draw() {
     r3time += (int)random(0, 4);
     r4time += (int)random(0, 4);
     r5time += (int)random(0, 4);
-    if (time%300 == 0 && sunspots.size() < 5) {
+    if (time%600 == 0 && sunspots.size() < 5) {
       sunspots.add(new Sunlight(random(800), 0));
     }
     for (Sunlight x : sunspots) {  
@@ -284,41 +298,41 @@ void draw() {
     for (int i = 0; i < plants.length; i++) {
       for (int j = 0; j < plants[i].length; j++) {
         if (plants[i][j] != null && plants[i][j].getState() == 0) { //removes dead plant from the field 
-          if(i == 0) {
-            for(int n = 0; n < projectile1.size(); n++) {
-              if(projectile1.get(n).getSignature() == plants[i][j].getX() ) {
+          if (i == 0) {
+            for (int n = 0; n < projectile1.size(); n++) {
+              if (projectile1.get(n).getSignature() == plants[i][j].getX() ) {
                 projectile1.remove(n);
                 n--;
               }
             }
           }
-          if(i == 1) {
-            for(int n = 0; n < projectile2.size(); n++) {
-              if(projectile2.get(n).getSignature() == plants[i][j].getX() ) {
+          if (i == 1) {
+            for (int n = 0; n < projectile2.size(); n++) {
+              if (projectile2.get(n).getSignature() == plants[i][j].getX() ) {
                 projectile2.remove(n);
                 n--;
               }
             }
           }
-          if(i == 2) {
-            for(int n = 0; n < projectile3.size(); n++) {
-              if(projectile3.get(n).getSignature() == plants[i][j].getX() ) {
+          if (i == 2) {
+            for (int n = 0; n < projectile3.size(); n++) {
+              if (projectile3.get(n).getSignature() == plants[i][j].getX() ) {
                 projectile3.remove(n);
                 n--;
               }
             }
           }
-          if(i == 3) {
-            for(int n = 0; n < projectile4.size(); n++) {
-              if(projectile4.get(n).getSignature() == plants[i][j].getX() ) {
+          if (i == 3) {
+            for (int n = 0; n < projectile4.size(); n++) {
+              if (projectile4.get(n).getSignature() == plants[i][j].getX() ) {
                 projectile4.remove(n);
                 n--;
               }
             }
           }
-          if(i == 4) {
-            for(int n = 0; n < projectile5.size(); n++) {
-              if(projectile5.get(n).getSignature() == plants[i][j].getX() ) {
+          if (i == 4) {
+            for (int n = 0; n < projectile5.size(); n++) {
+              if (projectile5.get(n).getSignature() == plants[i][j].getX() ) {
                 projectile5.remove(n);
                 n--;
               }
@@ -326,7 +340,7 @@ void draw() {
           }             
           plants[i][j] = null;
         }
-        if (plants[i][j] != null) {//move projectiles
+        else if (plants[i][j] != null) {//move projectiles
           plants[i][j].move();
 
           if (plants[i][j].getType() == 1) {  //takes projectiles from peashooters into heap
@@ -400,7 +414,7 @@ void display() {
     rect(625, 5, 150, 75, 15);    
     fill(0);    
     text("Instructions", 650, 50);
-  } else if (instructions){
+  } else if (instructions) {
     textSize(16);    
     fill(255);    
     text("You can place plants by pressing on a type of plant", 50, 150);
@@ -502,7 +516,7 @@ void mouseClicked() {
       //start = true;    
       info = false;
     }
-  } else if (instructions){
+  } else if (instructions) {
     if (mouseX >= 625 && mouseX <= 775 && mouseY >= 5 && mouseY <= 80) { 
       start = true;    
       instructions = false;
