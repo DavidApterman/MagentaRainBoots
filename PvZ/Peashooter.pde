@@ -15,7 +15,7 @@ class Peashooter extends Plant {
     x = 25;
     y = 100;
     state = 1;
-    damage = 15;
+    damage = 30;
     shotCounter = 0;
     projectiles = new ArrayList<Projectile>(10);
     type = 1;
@@ -65,7 +65,7 @@ class Peashooter extends Plant {
   }
 
   void shoot() {
-    if (shotCounter % 30 == 0) { //interval shots
+    if (shotCounter % 60 == 0) { //interval shots
       Projectile proj = new Projectile(x, y, damage, x);
       projectiles.add(proj);
     }

@@ -6,7 +6,7 @@ class Jumper extends Zombie { //implements Comparable {
   color c;
   int state; // if state = 0, zombie dies
   int damage;
-  float speed = 0.5;
+  float speed = 0.95;
 
   //default constructor
   Jumper() {
@@ -81,7 +81,7 @@ class Jumper extends Zombie { //implements Comparable {
 
   //displays the zombie
   void display() {
-    if (x == -25) {
+    if (x <= -25) {
       fill(255, 0, 0);
     } 
     else if(state == 1) {

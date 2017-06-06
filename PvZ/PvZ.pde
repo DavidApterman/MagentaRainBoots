@@ -60,6 +60,7 @@ boolean levelClick = true;
 //mini "draw" method for each row, uses row-specific variables to ensure equivalent/compact running for each row
 void drawRow(ArrayList<Projectile> heap, ArrayList<Zombie> off, ArrayList<Zombie> on, ArrayList<Zombie> next, int timer, int rowNum) {
   Plant p = null;
+  float distance = 800;
 
   if (timer % 900 == 0 || timer % 900 == 300 || timer % 900 == 600) { //maintain rate of zombies
     if (!off.isEmpty()) {
@@ -67,14 +68,13 @@ void drawRow(ArrayList<Projectile> heap, ArrayList<Zombie> off, ArrayList<Zombie
       System.out.println("zombie spawn");
     }
   }
-
-  for (int i = 0; i < plants[rowNum].length; i++) {  //sets target plant p to point to the furthest plant in the row
-    if (plants[rowNum][i] != null) {
-      p = plants[rowNum][i];
-    }
-  }
-
   for (int x = 0; x < on.size(); x++) { //checks if a zombie has reached the end of the row, which would cause a game over
+    for(int i = 0; i < plants[rowNum].length; i++) {
+      if(plants[rowNum][i] != null && plants[rowNum][i].getX() - 20 < on.get(x).getX() && on.get(x).getX() - plants[rowNum][i].getX() <= distance ) {
+        p = plants[rowNum][i];
+        distance = on.get(x).getX() - plants[rowNum][i].getX();
+      }
+    }              
     if (on.get(x).getX() <= -25) { //if true, zombie reached end
       on.get(x).display();
       fill(255,0,0);
@@ -84,7 +84,7 @@ void drawRow(ArrayList<Projectile> heap, ArrayList<Zombie> off, ArrayList<Zombie
     } 
     else if(on.get(x).getState() == 2 && p != null && p.getX() + 25 >= on.get(x).getX() - 25 && p.getX() <= on.get(x).getX()) {
       on.get(x).setState(1);
-      on.get(x).setX(p.getX() - 20);
+      on.get(x).setX(p.getX() - 15);
     }
     else if (p != null && p.getX() + 25 >= on.get(x).getX() - 25 && p.getX()-20 <= on.get(x).getX()) {    //detects plant-zombie collision
       if (p.getType() == 4) {
@@ -94,10 +94,10 @@ void drawRow(ArrayList<Projectile> heap, ArrayList<Zombie> off, ArrayList<Zombie
         p.setHealth(on.get(x).getDamage() );
         on.get(x).display();
       }
-    } else {                                                                                            //moves zombies forward
+    }
+    else {                                                                                            //moves zombies forward
       on.get(x).move();
     }
-
     for (int i = 0; i < heap.size(); i++) {
       if (x < on.size() &&
         heap.get(i).getX() + 5 >= on.get(x).getX() - 25 &&

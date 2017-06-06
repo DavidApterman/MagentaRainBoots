@@ -81,7 +81,7 @@ class Zombie { //implements Comparable {
 
   //displays the zombie
   void display() {
-    if (x == -25) {
+    if (x <= -25) {
       fill(255, 0, 0);
     } else {
       fill(150);
