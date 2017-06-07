@@ -1,16 +1,15 @@
 # MagentaRainBoots - V.T.L.F.C.U.H.C
 ## David Apterman, Jesse Sit, Henry Zheng 
 
-  V.T.L.F.C.U.H.C is our representation of Plants vs. Zombies coded in Processing. The project presents a field onto which the user can place plants to combat incoming zombies. Currently there is a welcome screen with a start button and an info button (in-game description). If you click on the info button, then the instruction button also shows up. This is for those that don't know how to play our game. Else, if you think you're a pro and want to go straight into the game, be our guests and click on the start button.
+<h1> Overview </h1>
+  V.T.L.F.C.U.H.C (Vegetative Terrestrial Life Forms Combating Undead Human Crusaders) is our representation of the classic Plants vs. Zombies. Coded in Processing, our project presents a field onto which the user can place plants to combat incoming zombies. Players are greeted with a welcome screen, featuring a start and an info button. The information screen tells the user about the types of zombies they will be facing and is followed by the instruction screen, which tells the user how to place their plants. Clicking start will simply begin the game.
   
-  The user is able to place plants, which immediately fire (generate) projectiles. The project uses ALHeaps and MergeSort to check collisions between plant projectiles and zombies to implement the user's defense. The user also can see how much sunlight he currently holds, much like the game.
-  
-  Currently, you can place plants by pressing on a type of plant on the top and then clicking somewhere on the field. While you have clicked on a type of plant, the currently held type is displayed in the top right corner. There is also a reset button below it to reset the currently held type.
+<h1> How It Works </h1>  
+  The user is able to place plants by clicking on marked squares on the field. These squares correspond to a 2D-Array, a data structure that allows simple iteration to make sure all plants get displayed, and allows us to easily access plants on a row-specific basis. Plant type is selected at the top, where users will click on the type of the plant they wish to place, and then click the screen. After they've clicked the plant name, it will be displayed in the top-left as a confirmation of what they are placing. There are also reset and remove buttons at the top, for canceling your choice or removing a plant from the field, respectively. Note: A user cannot place a plant if they lack the sunlight to do so. 
+  </br>
+  Some of the plants fire projectiles (displayed as small ellipses in the game). The project uses ALHeaps to check collisions between the forward most projectile and the zombie barrelling down the row to improve efficiency.
+  In addition, the zombies themselves are sorted, based off their x-coordinate. This was originally unnecessary, but became needed when we wanted to develop zombies with different speeds/complexity. The project uses MergeSort to update which zombie is in "front".
 
-  There is also a remove option where you press on the remove text at the top of the screen and click on a plant. It will remove the plant from the field, much like in the game.
-
-  Currently, we have 4 different types of plants: peashooters, sunflowers, wallnuts, and chompers. The peashooter is your normal, average plant. The sunflower is your friend. It produces sunlight so that you can plant more plants! The wallnut is your best line of defense with a ton of health. Last but not least, the chomper is your last resort if you want to kill a zombie instantly- but be careful, the chomper also dies with the zombie (suicide bomber???). These plants cost 50, 50, 100, and 100 sunlight, respectively.
-  
 ### Launch instructions
     
 1. Enter you terminal and cd into the location that you want to have this game
