@@ -541,6 +541,18 @@ void display() {
     text("Instructions", 650, 50);
   } else if (instructions) {
     textSize(16);    
+    fill(0, 255, 0);
+    rect(450, 350, 50, 50);
+    text("peashooter", 430, 425);
+    fill(255, 255, 0);
+    rect(540, 350, 50, 50);
+    text("sunflower", 527, 425);
+    fill(255);
+    rect(630, 350, 50, 50);
+    text("wallnut", 628, 425);
+    fill(75, 0, 130);
+    rect(720, 350, 50, 50);
+    text("chomper", 712, 425);
     fill(255);    
     text("You can place plants by pressing on a type of plant", 50, 150);
     text("on the top and then clicking somewhere on the field.", 50, 175);
