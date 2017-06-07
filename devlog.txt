@@ -157,7 +157,7 @@ Henry   :: added instructions screen, cleaned up devlog and updated readme.
 
 @2017-06-06
 --------------------------------------------------------------
-David   :: fixed bugs: jumper ignoring all plants, projectiles ignoring added zombies of subsequent levels, updated uml.pdf
+David   :: fixed bugs: jumper ignoring all plants, projectiles ignoring added zombies of subsequent levels, updated uml & README
 Jesse   :: randomized zombie type being spawned, added speeding up feature, updated flow.pdf
 David, Henry   :: edited instruction & info page
 ==============================================================
