@@ -16,7 +16,7 @@ class Jumper extends Zombie { //implements Comparable {
     c = color(r, g, b);
     x = 800;
     y = 95;
-    health = 150;
+    health = 80;
     //y = ((int) random(5)) * 120 + 100;
     state = 2;
     damage = 2;

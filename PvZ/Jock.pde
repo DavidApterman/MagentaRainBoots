@@ -84,7 +84,7 @@ class Jock extends Zombie { //implements Comparable {
     if (x <= -25) {
       fill(255, 0, 0);
     } else {
-      fill(110);
+      fill(120, 140, 150);
     }
     noStroke();
     rect(x, y, 50, 50);

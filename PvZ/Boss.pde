@@ -84,7 +84,7 @@ class Boss extends Zombie { //implements Comparable {
     if (x <= -25) {
       fill(255, 0, 0);
     } else {
-      fill(110);
+      fill(40, 60, 60);
     }
     noStroke();
     rect(x, y, 100, 100);

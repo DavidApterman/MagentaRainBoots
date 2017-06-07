@@ -114,11 +114,11 @@ void drawRow(ArrayList<Projectile> heap, ArrayList<Zombie> off, ArrayList<Zombie
       }
     }
   }
-  for(int i = 0; i < plants[rowNum].length; i++) {
-    if(plants[rowNum][i] != null && plants[rowNum][i].getState() != 0) {
+  for (int i = 0; i < plants[rowNum].length; i++) {
+    if (plants[rowNum][i] != null && plants[rowNum][i].getState() != 0) {
       float xcor = plants[rowNum][i].getX();
-      for(Projectile j: heap) {
-        if( j.getSignature() == xcor) {
+      for (Projectile j : heap) {
+        if ( j.getSignature() == xcor) {
           j.display();
         }
       }
@@ -203,7 +203,7 @@ void setup() {
     } else if (rand <= .3) {
       Jock jo1 = new Jock(800, 95);
       zombies1_offfield.add(jo1);
-    } else if (rand <= .9) {
+    } else if (rand <= .95) {
       Zombie test = new Zombie(800, 95);
       zombies1_offfield.add(test);
     } else {
@@ -212,20 +212,68 @@ void setup() {
     }
   }
   for (int i = 0; i < random(4); i++) {//adds zombies to row 2
-    Zombie test2 = new Zombie(800, 215);
-    zombies2_offfield.add(test2);
+    float rand2 = random(0, 1);
+    if (rand2 <= .15) {
+      Jumper j2 = new Jumper(800, 215);
+      zombies2_offfield.add(j2);
+    } else if (rand2 <= .3) {
+      Jock jo2 = new Jock(800, 215);
+      zombies2_offfield.add(jo2);
+    } else if (rand2 <= .95) {
+      Zombie test2 = new Zombie(800, 215);
+      zombies2_offfield.add(test2);
+    } else {
+      Boss b2 = new Boss(800, 190);
+      zombies2_offfield.add(b2);
+    }
   }
   for (int i = 0; i < random(4); i++) {//adds zombies to row 3
-    Zombie test3 = new Zombie(800, 335);
-    zombies3_offfield.add(test3);
+    float rand3 = random(0, 1);
+    if (rand3 <= .15) {
+      Jumper j3 = new Jumper(800, 335);
+      zombies3_offfield.add(j3);
+    } else if (rand3 <= .3) {
+      Jock jo3 = new Jock(800, 335);
+      zombies3_offfield.add(jo3);
+    } else if (rand3 <= .95) {
+      Zombie test3 = new Zombie(800, 335);
+      zombies3_offfield.add(test3);
+    } else {
+      Boss b3 = new Boss(800, 310);
+      zombies3_offfield.add(b3);
+    }
   }
   for (int i = 0; i < random(4); i++) {//adds zombies to row 4
-    Zombie test4 = new Zombie(800, 455);
-    zombies4_offfield.add(test4);
+    float rand4 = random(0, 1);
+    if (rand4 <= .15) {
+      Jumper j4 = new Jumper(800, 455);
+      zombies4_offfield.add(j4);
+    } else if (rand4 <= .3) {
+      Jock jo4 = new Jock(800, 455);
+      zombies4_offfield.add(jo4);
+    } else if (rand4 <= .95) {
+      Zombie test4 = new Zombie(800, 455);
+      zombies4_offfield.add(test4);
+    } else {
+      Boss b4 = new Boss(800, 430);
+      zombies4_offfield.add(b4);
+    }
   }
   for (int i = 0; i < random(4); i++) {//adds zombies to row 5
-    Zombie test5 = new Zombie(800, 575);
-    zombies5_offfield.add(test5);
+    float rand5 = random(0, 1);
+    if (rand5 <= .15) {
+      Jumper j5 = new Jumper(800, 575);
+      zombies5_offfield.add(j5);
+    } else if (rand5 <= .3) {
+      Jock jo5 = new Jock(800, 575);
+      zombies5_offfield.add(jo5);
+    } else if (rand5 <= .95) {
+      Zombie test5 = new Zombie(800, 575);
+      zombies5_offfield.add(test5);
+    } else {
+      Boss b5 = new Boss(800, 550);
+      zombies5_offfield.add(b5);
+    }
   }
   //testing purposes
   /*plants[0][0] = new Peashooter(25,95);
@@ -238,23 +286,88 @@ void setup() {
 void resetLevel() {
   while ( !zombies1_nextfield.isEmpty() ) {
     zombies1_nextfield.remove(0);
-    zombies1_offfield.add( new Zombie(800, 95, 100 + (levelNum * 15)));
+    float rand = random(0, 1);
+    if (rand <= .15) {
+      Jumper j1 = new Jumper(800, 95, 80 + (levelNum * 15));
+      zombies1_offfield.add(j1);
+    } else if (rand <= .3) {
+      Jock jo1 = new Jock(800, 95, 150 + (levelNum * 20));
+      zombies1_offfield.add(jo1);
+    } else if (rand <= .95) {
+      Zombie test = new Zombie(800, 95, 100 + (levelNum * 15));
+      zombies1_offfield.add(test);
+    } else {
+      Boss b1 = new Boss(800, 70, 500 + (levelNum * 30));
+      zombies1_offfield.add(b1);
+    }
   }
   while ( !zombies2_nextfield.isEmpty() ) {
     zombies2_nextfield.remove(0);
-    zombies2_offfield.add( new Zombie(800, 215, 100 + (levelNum * 15)));
+    float rand2 = random(0, 1);
+    if (rand2 <= .15) {
+      Jumper j2 = new Jumper(800, 215, 80 + (levelNum * 15));
+      zombies2_offfield.add(j2);
+    } else if (rand2 <= .3) {
+      Jock jo2 = new Jock(800, 215, 150 + (levelNum * 20));
+      zombies2_offfield.add(jo2);
+    } else if (rand2 <= .95) {
+      Zombie test2 = new Zombie(800, 215, 100 + (levelNum * 15));
+      zombies2_offfield.add(test2);
+    } else {
+      Boss b2 = new Boss(800, 190, 500 + (levelNum * 30));
+      zombies2_offfield.add(b2);
+    }
   }
   while ( !zombies3_nextfield.isEmpty() ) {
     zombies3_nextfield.remove(0);
-    zombies3_offfield.add( new Zombie(800, 335, 100 + (levelNum * 15)));
+    float rand3 = random(0, 1);
+    if (rand3 <= .15) {
+      Jumper j3 = new Jumper(800, 335, 80 + (levelNum * 15));
+      zombies3_offfield.add(j3);
+    } else if (rand3 <= .3) {
+      Jock jo3 = new Jock(800, 335, 150 + (levelNum * 20));
+      zombies3_offfield.add(jo3);
+    } else if (rand3 <= .95) {
+      Zombie test3 = new Zombie(800, 335, 100 + (levelNum * 15));
+      zombies3_offfield.add(test3);
+    } else {
+      Boss b3 = new Boss(800, 310, 500 + (levelNum * 30));
+      zombies3_offfield.add(b3);
+    }
   }
   while ( !zombies4_nextfield.isEmpty() ) {
     zombies4_nextfield.remove(0);
-    zombies4_offfield.add( new Zombie(800, 455, 100 + (levelNum * 15)));
+    float rand4 = random(0, 1);
+    if (rand4 <= .15) {
+      Jumper j4 = new Jumper(800, 455, 80 + (levelNum * 15));
+      zombies4_offfield.add(j4);
+    } else if (rand4 <= .3) {
+      Jock jo4 = new Jock(800, 455, 150 + (levelNum * 20));
+      zombies4_offfield.add(jo4);
+    } else if (rand4 <= .95) {
+      Zombie test4 = new Zombie(800, 455, 100 + (levelNum * 15));
+      zombies4_offfield.add(test4);
+    } else {
+      Boss b4 = new Boss(800, 430, 500 + (levelNum * 30));
+      zombies4_offfield.add(b4);
+    }
   }
   while ( !zombies5_nextfield.isEmpty() ) {
     zombies5_nextfield.remove(0);
-    zombies5_offfield.add( new Zombie(800, 575, 100 + (levelNum * 15)));
+    float rand5 = random(0, 1);
+    if (rand5 <= .15) {
+      Jumper j5 = new Jumper(800, 575, 80 + (levelNum * 15));
+      zombies5_offfield.add(j5);
+    } else if (rand5 <= .3) {
+      Jock jo5 = new Jock(800, 575, 150 + (levelNum * 20));
+      zombies5_offfield.add(jo5);
+    } else if (rand5 <= .95) {
+      Zombie test5 = new Zombie(800, 575, 100 + (levelNum * 15));
+      zombies5_offfield.add(test5);
+    } else {
+      Boss b5 = new Boss(800, 550, 500 + (levelNum * 30));
+      zombies5_offfield.add(b5);
+    }
   }
   for (int x = 1; x <= random(2); x++) {
     zombies1_offfield.add( new Zombie(800, 95, 100 + (levelNum * 15)));
@@ -339,8 +452,7 @@ void draw() {
             }
           }             
           plants[i][j] = null;
-        }
-        else if (plants[i][j] != null) {//move projectiles
+        } else if (plants[i][j] != null) {//move projectiles
           plants[i][j].move();
 
           if (plants[i][j].getType() == 1) {  //takes projectiles from peashooters into heap
