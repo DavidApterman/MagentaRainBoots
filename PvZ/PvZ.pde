@@ -39,6 +39,7 @@ int r2time = (int)random(-500, -200);
 int r3time = (int)random(-500, -200);
 int r4time = (int)random(-500, -200);
 int r5time = (int)random(-500, -200);
+int speed = 0;
 int sunlight = 250;                                                                                     //starting sunlight (currently high for testing)
 int plantclicked = 0;                                                                                   //stores type of plant after user selection to place correct breed
 boolean start = false;                                                                                  //start screen display boolean
@@ -195,6 +196,7 @@ ArrayList<Zombie>  sort( ArrayList<Zombie>  arr ) {
 void setup() {
   size(800, 660); //generates board
   background(25, 150, 25); //sets board color 
+  frameRate(60); //sets basic parameters
   for (int i = 0; i < random(4); i++) {//adds zombies to row 1
     float rand = random(0, 1);
     if (rand <= .15) {
@@ -388,7 +390,6 @@ void resetLevel() {
 
 void draw() {
   ArrayList<Projectile> arr = null;
-  frameRate(60); //sets basic parameters
   if (!start) {//start screen
     background(0, 0, 0);
     display();
@@ -612,6 +613,7 @@ void display() {
     text("sunlight", 15, 25);
     text(sunlight, 30, 50);
     text("cost:", 120, 50);
+    text(">>", 120, 25);
     text("||", 93, 25);
     text("||", 93, 50);
     text("peashooter", 190, 25);
@@ -688,6 +690,14 @@ void mouseClicked() {
           }
         }
       }
+    }
+    if (speed == 0 && mouseX >= 110 && mouseX <= 160 && mouseY >= 0 && mouseY <= 35){
+      System.out.println("speed");
+      frameRate(120);
+      speed = 1;
+    } else {
+      frameRate(60);
+      speed = 0;
     }
     int r = (mouseY - 60) / 120;
     int c = mouseX / 100;
