@@ -388,7 +388,7 @@ void resetLevel() {
 
 void draw() {
   ArrayList<Projectile> arr = null;
-  frameRate(100); //sets basic parameters
+  frameRate(60); //sets basic parameters
   if (!start) {//start screen
     background(0, 0, 0);
     display();
