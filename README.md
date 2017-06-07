@@ -5,11 +5,15 @@
   V.T.L.F.C.U.H.C (Vegetative Terrestrial Life Forms Combating Undead Human Crusaders) is our representation of the classic Plants vs. Zombies. Coded in Processing, our project presents a field onto which the user can place plants to combat incoming zombies. Players are greeted with a welcome screen, featuring a start and an info button. The information screen tells the user about the types of zombies they will be facing and is followed by the instruction screen, which tells the user how to place their plants. Clicking start will simply begin the game.
   </br></br>
 <h1> How It Works </h1>  
-  The user is able to place plants by clicking on marked squares on the field. These squares correspond to a 2D-Array, a data structure that allows simple iteration to make sure all plants get displayed, and allows us to easily access plants on a row-specific basis. Plant type is selected at the top, where users will click on the type of the plant they wish to place, and then click the screen. After they've clicked the plant name, it will be displayed in the top-left as a confirmation of what they are placing. There are also reset and remove buttons at the top, for canceling your choice or removing a plant from the field, respectively. Note: A user cannot place a plant if they lack the sunlight to do so. 
+  The user is able to place plants by clicking on marked squares on the field. These squares correspond to a 2D-Array, a data structure that allows simple iteration to make sure all plants get displayed, and allows us to easily access plants on a row-specific basis.
   </br></br>
-  Some of the plants fire projectiles (displayed as small ellipses in the game). The project uses ALHeaps to check collisions between the forward most projectile and the zombie barrelling down the row to improve efficiency. </br>
+  Plant type is selected at the top, where users will click on the type of the plant they wish to place, and then click the screen. After they've clicked the plant name, it will be displayed in the top-left as a confirmation of what they are placing. There are also reset and remove buttons at the top, for canceling your choice or removing a plant from the field, respectively. Note: A user cannot place a plant if they lack the sunlight to do so. 
+  </br></br>
+  Sunlight is obtained in one of two ways: either from the sky or from sunflowers. Sunlight will fall at slightly random intervals, appearing at the top of the screen and slowly descending until it stops at a random y-coordinate. Clicking on it will remove it from the screen and grant the user 25 sunlight. Perfect! Sunlight can also be obtained from sunflowers, who will randomly drop Sunlight in their placed square. These will only generate 10 sunlight a pop.
+  </br></br>
+  Some of the plants fire projectiles (displayed as small ellipses in the game). The project uses ALHeaps to check collisions between the forward most projectile and the zombie barrelling down the row to improve efficiency. </br></br>
   In addition, the zombies themselves are sorted, based off their x-coordinate. This was originally unnecessary, but became needed when we wanted to develop zombies with different speeds/complexity. The project uses MergeSort to update which zombie is in "front".
-
+  
 ### Launch instructions
     
 1. Enter you terminal and cd into the location that you want to have this game
