@@ -40,7 +40,7 @@ int r3time = (int)random(-500, -200);
 int r4time = (int)random(-500, -200);
 int r5time = (int)random(-500, -200);
 int speed = 0;
-int sunlight = 250;                                                                                     //starting sunlight (currently high for testing)
+int sunlight = 150;                                                                                     //starting sunlight (currently high for testing)
 int plantclicked = 0;                                                                                   //stores type of plant after user selection to place correct breed
 boolean start = false;                                                                                  //start screen display boolean
 boolean info = false;
@@ -48,13 +48,6 @@ boolean instructions = false;
 boolean levelDone = false;
 int levelNum = 0;
 boolean levelClick = true;
-//Do not disturb (for now)
-//ALHeap projectile1 = new ALHeap();
-//ALHeap projectile2 = new ALHeap();
-//ALHeap projectile3 = new ALHeap();
-//ALHeap projectile4 = new ALHeap();
-//ALHeap projectile5 = new ALHeap();
-
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -67,7 +60,6 @@ void drawRow(ArrayList<Projectile> heap, ArrayList<Zombie> off, ArrayList<Zombie
   if (timer % 900 == 0 || timer % 900 == 300 || timer % 900 == 600) { //maintain rate of zombies
     if (!off.isEmpty()) {
       on.add(off.remove(0)); //if there are more zombies to spawn, by all means
-      System.out.println("zombie spawn");
     }
   }
   for (int x = 0; x < on.size(); x++) { //checks if a zombie has reached the end of the row, which would cause a game over
@@ -115,7 +107,7 @@ void drawRow(ArrayList<Projectile> heap, ArrayList<Zombie> off, ArrayList<Zombie
       }
     }
   }
-  for (int i = 0; i < plants[rowNum].length; i++) {
+  for (int i = 0; i < plants[rowNum].length; i++) {            //if a plant has died but has not yet been removed from the array , do not display its projectiles
     if (plants[rowNum][i] != null && plants[rowNum][i].getState() != 0) {
       float xcor = plants[rowNum][i].getX();
       for (Projectile j : heap) {
@@ -277,12 +269,6 @@ void setup() {
       zombies5_offfield.add(b5);
     }
   }
-  //testing purposes
-  /*plants[0][0] = new Peashooter(25,95);
-   plants[1][0] = new Peashooter(25,215);
-   plants[2][0] = new Peashooter(25,335);
-   plants[3][0] = new Peashooter(25,455);
-   plants[4][0] = new Peashooter(25,575);*/
 }
 
 void resetLevel() {
@@ -402,7 +388,7 @@ void draw() {
     r3time += (int)random(0, 4);
     r4time += (int)random(0, 4);
     r5time += (int)random(0, 4);
-    if (time%600 == 0 && sunspots.size() < 5) {
+    if (time%300 == 0 && sunspots.size() < 5) {
       sunspots.add(new Sunlight(random(800), 0));
     }
     for (Sunlight x : sunspots) {  
@@ -692,7 +678,6 @@ void mouseClicked() {
       }
     }
     if (speed == 0 && mouseX >= 110 && mouseX <= 160 && mouseY >= 0 && mouseY <= 35){
-      System.out.println("speed");
       frameRate(120);
       speed = 1;
     } else {
@@ -724,22 +709,16 @@ void mouseClicked() {
       }
     }
     if (mouseX >= 727 && mouseX <= 780 && mouseY >= 35 && mouseY <= 60 ) {
-      System.out.println("reset");
       plantclicked = 0;
     } else if (mouseX >= 600 && mouseX <= 690 && mouseY >= 10 && mouseY <= 60) {
-      System.out.println("remove");
       plantclicked = -1;
     } else if (sunlight >= 50 && mouseX >= 190 && mouseX <= 290 && mouseY >= 10 && mouseY <= 35 ) { //detects click on peashooter button
-      System.out.println("peashooter hit");
       plantclicked = 1;
     } else if ( sunlight >= 50 && mouseX >= 300 && mouseX <= 400 && mouseY >= 10 && mouseY <= 35 ) { //detects click on sunflower button
-      System.out.println("sunflower hit");
       plantclicked = 2;
     } else if ( sunlight >= 50 && mouseX >= 400 && mouseX <= 500 && mouseY >= 10 && mouseY <= 35 ) { //detects click on wallnut button
-      System.out.println("wallnut hit");
       plantclicked = 3;
     } else if ( sunlight >= 50 && mouseX >= 500 && mouseX <= 600 && mouseY >= 10 && mouseY <= 35 ) { //detects click on wallnut button
-      System.out.println("chomper hit");
       plantclicked = 4;
     }
   }
