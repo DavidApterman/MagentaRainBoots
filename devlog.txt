@@ -154,3 +154,10 @@ Jesse   :: fixed bugs: projectiles ignoring added zombies of subsequent levels
 --------------------------------------------------------------
 Henry   :: added instructions screen, cleaned up devlog and updated readme.
 ==============================================================
+
+@2017-06-05
+--------------------------------------------------------------
+David   :: fixed bugs: jumper ignoring all plants, projectiles ignoring added zombies of subsequent levels
+Jesse   :: randomized zombie type being spawned
+David, Henry   :: edited instruction page
+==============================================================
