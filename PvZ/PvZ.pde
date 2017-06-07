@@ -556,7 +556,7 @@ void display() {
     text("It produces sunlight so that you can plant more plants!", 50, 480);    
     text("The wallnut is your best line of defense with a ton of health.", 50, 510);   
     text("Last but not least, the chomper is your last resort if you want to kill a zombie", 50, 540);
-    text("instantly- but be careful, the chomper also dies with the zombie (suicide bomber???).", 50, 570);
+    text("instantly- but be careful, the chomper also dies with the zombie.", 50, 570);
     text("These plants cost 50, 50, 100, and 100 sunlight, respectively.", 50, 600);    
     rect(625, 5, 150, 75, 15);    
     fill(0);    
