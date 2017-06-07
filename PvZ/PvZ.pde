@@ -508,19 +508,32 @@ void draw() {
 
 
 void display() { 
-  if (info) {
-    textSize(18);    
+   if (info) {
+    textSize(14);    
     fill(255);    
     text("You play a homeowner in the midst of a zombie apocalypse.", 100, 100);    
-    text("Your name is Al and you are an avid plant grower.", 100, 150);    
-    text("You sing to plants and somehow get them to grow immediately.", 100, 200);    
+    text("Your name is Al and you are an avid gardener.", 100, 150);    
+    text("Your neighbors have fled but you remain, green thumb at the ready.", 100, 200);    
     text("However, you need sunlight to grow these plants.", 100, 250);    
-    text("It's a good thing you have a sunflower plant then!", 100, 300);    
-    text("Sunlight also falls from the sun, so be sure to pick them up.", 100, 350);    
-    text("Your other plants shoot projectiles that damage the zombies.", 100, 400);    
+    text("It's a good thing you have a sunflower plant then! (and friends)", 100, 300);    
+    fill(255);
+    text("Bits of sunlight also fall from the sky, so be sure to pick them up.", 100, 350);    
+    text("These are your foes: ", 100, 400);    
+    fill(150);
+    rect(50, 420, 50, 50);
+    fill(255);
+    text("Zombie- seeks brains,grains", 110, 445);
+    fill(120, 140, 150);
+    rect(320, 420, 50, 50);
+    fill(255);
+    text("Jock - bigger,slower", 380, 445);
+    fill(150);
+    rect(530, 420, 50, 50);
+    fill(255);
+    text("Jumper - attacks from behind", 585, 445);
     fill(256, 0, 0);    
-    text("Your goal is to kill all of the zombies to protect yourself", 100, 490);    
-    text("from the zombies getting into your house and eating your brains.", 100, 520);    
+    text("Your goal is to kill all of the zombies to protect yourself", 100, 510);    
+    text("from the zombies getting into your house and eating your brains.", 100, 540);    
     fill(255);    
     text("Good luck, and may the odds be ever in your favor.", 100, 600);    
     rect(625, 5, 150, 75, 15);    
